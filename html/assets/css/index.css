@@ -1,0 +1,103 @@
+:root {
+	--primary-color: #2563eb;
+	--text-color: #1f2937;
+	--text-color-light: #6b7280;
+	--background-color: #f9fafb;
+	--card-background-color: #fff;
+	--border-color: #e5e7eb;
+	--hover-color: #f3f4f6;
+	--no-results-color: #ff6b6b;
+}
+
+body {
+	min-height: 100vh;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+		sans-serif;
+	color: var(--text-color);
+	line-height: 1.5;
+	margin: 0;
+	padding: 2rem;
+	background-color: var(--background-color);
+}
+
+.container {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.search-box {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.75rem 1rem;
+	font-size: 1rem;
+	border: 1px solid var(--border-color);
+	border-radius: 0.5rem;
+	margin-bottom: 2rem;
+	background-color: var(--card-background-color);
+	transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-box:focus {
+	outline: none;
+	border-color: var(--primary-color);
+	box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.search-box.no-results {
+	border-color: var(--no-results-color);
+	background-color: rgba(255, 107, 107, 0.1);
+}
+
+.search-box.no-results::placeholder {
+	color: var(--no-results-color);
+}
+
+.content-card {
+	padding: 1.5rem;
+	border: 1px solid var(--border-color);
+	border-radius: 0.5rem;
+	margin-bottom: 1rem;
+	transition: transform 0.2s, box-shadow 0.2s;
+	text-decoration: none;
+	display: block;
+	color: inherit;
+	background-color: var(--card-background-color);
+}
+
+.content-card:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.content-title {
+	font-size: 1.25rem;
+	font-weight: 600;
+	margin: 0 0 0.5rem 0;
+	color: var(--text-color);
+}
+
+.content-description {
+	color: var(--text-color-light);
+	margin: 0 0 1rem 0;
+}
+
+.keywords {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.25rem;
+	margin: 0 -0.25rem;
+}
+
+.keyword {
+	background-color: var(--hover-color);
+	color: var(--text-color);
+	padding: 0.25rem 0.75rem;
+	border-radius: 9999px;
+	font-size: 0.75rem;
+	cursor: pointer;
+	transition: background-color 0.2s;
+}
+
+.keyword:hover {
+	background-color: var(--border-color);
+}

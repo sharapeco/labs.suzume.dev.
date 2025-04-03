@@ -1,0 +1,15 @@
+{
+  "name": "labs.suzume.dev.",
+  "type": "module",
+  "version": "0.1.0",
+  "description": "Suzume Labs Site",
+  "scripts": {
+    "start": "npx http-server html",
+    "build": "node scripts/make-index.js"
+  },
+  "author": "Studio Suzume",
+  "devDependencies": {
+    "cheerio": "^1.0.0",
+    "ignore": "^7.0.3"
+  }
+}

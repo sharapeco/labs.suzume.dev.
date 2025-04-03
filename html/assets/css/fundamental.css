@@ -1,0 +1,105 @@
+:root,
+:host {
+	--fore: #333;
+	--back: #fff;
+	--highlight: #007bff;
+	--border: #ddd;
+	--border-highlight: var(--highlight);
+	--radius: 0.25em;
+
+	color: var(--fore);
+	background-color: var(--back);
+
+	font-family: system-ui, sans-serif;
+	line-height: 1.5;
+}
+
+pre {
+	background: #f8f8f8;
+	padding: 1em;
+	font-size: 80%;
+	white-space: pre-wrap;
+	tab-size: 2;
+	border: 1px solid #e0e0e0;
+	border-radius: 0.25em;
+}
+
+.flex {
+	display: flex;
+}
+.flex-column {
+	flex-direction: column;
+}
+.flex-row {
+	flex-direction: row;
+}
+
+.items-center {
+	align-items: center;
+}
+.items-start {
+	align-items: flex-start;
+}
+.items-end {
+	align-items: flex-end;
+}
+.items-stretch {
+	align-items: stretch;
+}
+
+.justify-center {
+	justify-content: center;
+}
+.justify-start {
+	justify-content: flex-start;
+}
+.justify-end {
+	justify-content: flex-end;
+}
+.justify-between {
+	justify-content: space-between;
+}
+.justify-around {
+	justify-content: space-around;
+}
+.justify-evenly {
+	justify-content: space-evenly;
+}
+
+.flex-1 {
+	flex: 1;
+}
+
+.gap-1 {
+	gap: 1em;
+}
+
+.gap-2 {
+	gap: 2em;
+}
+
+.gap-3 {
+	gap: 3em;
+}
+
+.table {
+	border-collapse: collapse;
+}
+.table th,
+.table td {
+	border: 1px solid var(--border);
+	padding: 0.5em;
+}
+
+.drop-area {
+	--drop-area-height: 12em;
+	height: var(--drop-area-height);
+	border: 0.125em dashed var(--border);
+	border-radius: var(--radius);
+	padding: 1.5em;
+	text-align: center;
+	cursor: pointer;
+}
+.drop-area.dragover {
+	border-color: var(--border-highlight);
+}
