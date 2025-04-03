@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>合成フォントのサイズ調整</title>
+	<meta name="keywords" content="font,@font-size,size-adjust,ascent-override,descent-override,合成フォント">
+	<meta name="description" content="合成フォントのサイズ調整。">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&family=Noto+Sans+JP:wght@300&display=swap">
+	<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Noto+Sans+JP:wght@300&display=swap"> -->
+	<link rel="stylesheet" href="noto-sans-jp.css">
+	<style>
+		@font-face {
+			font-family: 'Composite';
+			font-style: normal;
+			font-weight: 300;
+			font-display: swap;
+			size-adjust: 106%;
+			ascent-override: 100%;
+			descent-override: 0%;
+			src: url(https://fonts.gstatic.com/s/raleway/v19/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVuEorCIPrE.woff2) format('woff2');
+			/* src: url(https://fonts.gstatic.com/s/montserrat/v15/JTURjIg1_i6t8kCHKm45_cJD3gnD_g.woff2) format('woff2'); */
+			unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+		}
+
+		body {
+			margin: 0;
+			padding: 1rem;
+			color: #3f3c3a;
+			background: #fefefd;
+		}
+
+		@media (prefers-color-scheme: dark) {
+			body {
+				color: #cacbd7;
+				background: #000;
+			}
+		}
+
+		p {
+			margin: 0;
+			font-family: 'Raleway', 'Noto Sans JP', sans-serif;
+			/* font-family: 'Montserrat', 'Noto Sans JP', sans-serif; */
+			font-size: 30px;
+			line-height: 46px;
+			font-weight: 300;
+			font-variant-numeric: lining-nums;
+		}
+
+		#composite {
+			font-family: 'Composite', sans-serif;
+		}
+
+		h1 {
+			font-size: 1.25rem;
+			font-weight: 700;
+		}
+
+		h2 {
+			margin: 2rem 0 0.75rem;
+			font-size: 1rem;
+			font-weight: 700;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>合成フォントのサイズ調整</h1>
+
+	<h2>調整なし</h2>
+	<p id="text">
+		国LINE国Word国character国type国123国456国$1,789円国「合成フォントの見本」国国１日２月３年４個５時６分７秒８人９件０度１丁目２番地３階４号グーテンベルクが活版印刷術を発明したのは1440年代後半といわれています。それから約20年後の1465年、その新しい技術はアルプスを越え、イタリアに伝わりました。ドイツから来たSweynheimとPannartzという二人がローマの北にあるSubiacoという村の修道院に滞在し、そこでイタリア最初の印刷物をつくったのです。
+	</p>
+	<pre>p {
+	font-family: 'Raleway', 'Noto Sans JP', sans-serif;
+}</pre>
+
+	<h2>調整あり</h2>
+	<p id="composite">
+		国LINE国Word国character国type国123国456国$1,789円国「合成フォントの見本」国国１日２月３年４個５時６分７秒８人９件０度１丁目２番地３階４号グーテンベルクが活版印刷術を発明したのは1440年代後半といわれています。それから約20年後の1465年、その新しい技術はアルプスを越え、イタリアに伝わりました。ドイツから来たSweynheimとPannartzという二人がローマの北にあるSubiacoという村の修道院に滞在し、そこでイタリア最初の印刷物をつくったのです。
+	</p>
+	<pre>@font-face {
+	font-family: 'Composite';
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+	size-adjust: 106%;
+	ascent-override: 100%;
+	descent-override: 0%;
+	src: url(https://fonts.gstatic.com/s/raleway/v19/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVuEorCIPrE.woff2) format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+#composite {
+	font-family: 'Composite', sans-serif;
+}</pre>
+</body>
+
+</html>

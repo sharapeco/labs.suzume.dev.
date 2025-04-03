@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>しっぽり明朝 テスト</title>
+	<style>
+		@font-face {
+			font-family: ShipporiMincho;
+			src: local('しっぽり明朝 OTF');
+		}
+		body {
+			margin: 0;
+			padding: 3rem;
+			color: #333;
+			background: #ddd;
+			font-family: ShipporiMincho, serif;
+		}
+		.doc {
+			width: 80rem;
+			margin-left: auto;
+			margin-right: auto;
+			margin-bottom: 3rem;
+			padding-block: 1.5rem;
+			padding-inline: 3rem;
+			background: #fff;
+		}
+		.-vert {
+			writing-mode: vertical-rl;
+			text-orientation: upright;
+		}
+		p {
+			position: relative;
+			margin: .5em 0;
+			font-size: 32px;
+			line-height: 1.5;
+		}
+		p::before {
+			display: block;
+			position: absolute;
+			top: -12px;
+			font-family: "Avenir Next", sans-serif;
+			font-size: 16px;
+			line-height: 1.5;
+			color: #999;
+		}
+		.salt {
+			font-feature-settings: "salt" 1;
+		}
+		.salt::before {
+			content: "salt";
+		}
+		.ss01 {
+			font-feature-settings: "ss01" 1;
+		}
+		.ss01::before {
+			content: "ss01";
+		}
+		.ss02 {
+			font-feature-settings: "ss02" 1;
+		}
+		.ss02::before {
+			content: "ss02";
+		}
+	</style>
+</head>
+<body>
+	<div class="doc">
+		<p>JQµ！⦿【】いぃうぅえぇおぉけげこごしじただとどなはばぱゔ化囮埖硴花貨錵</p>
+		<p class="salt">JQµ！⦿【】いぃうぅえぇおぉけげこごしじただとどなはばぱゔ化囮埖硴花貨錵</p>
+		<p>いぃうぅえぇおぉけげこごしじただとどなはばぱゔ</p>
+		<p class="ss01">いぃうぅえぇおぉけげこごしじただとどなはばぱゔ</p>
+		<p>JQ【】しじと</p>
+		<p class="ss02">JQ【】しじと</p>
+	</div>
+	<div class="doc -vert">
+		<p>JQµ！⦿【】いぃうぅえぇおぉけげこごしじただとどなはばぱゔ化囮埖硴花貨錵</p>
+		<p class="salt">JQµ！⦿【】いぃうぅえぇおぉけげこごしじただとどなはばぱゔ化囮埖硴花貨錵</p>
+		<p>いぃうぅえぇおぉけげこごしじただとどなはばぱゔ</p>
+		<p class="ss01">いぃうぅえぇおぉけげこごしじただとどなはばぱゔ</p>
+		<p>JQ【】しじと</p>
+		<p class="ss02">JQ【】しじと</p>
+	</div>
+</body>
+</html>

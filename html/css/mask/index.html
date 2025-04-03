@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Mask and composite</title>
+	<meta name="keywords" content="CSS,mask,composite">
+	<meta name="description" content="CSSによるマスク処理を試す。">
+
+	<style>
+		body {
+			min-height: 100vh;
+			display: grid;
+			place-items: center;
+			font-family: Avenir Next, sans-serif;
+			background: #e8e4e0;
+		}
+
+		@media (prefers-color-scheme: dark) {
+			body {
+				background: #484440;
+			}
+		}
+
+		#card {
+			position: relative;
+			width: 200px;
+			height: 300px;
+			color: #fff;
+			background: #e23;
+			border-radius: 20px;
+			box-shadow: 0 2px 60px #0001,
+				0 2px 20px #0002,
+				0 2px 4px #0005;
+			cursor: pointer;
+		}
+
+		.content {
+			padding: 10px;
+			border-radius: 15px;
+		}
+
+		h1 {
+			font-size: 20px;
+			margin: 10px 0 5px;
+		}
+
+		p {
+			font-size: 16px;
+			margin: 0;
+		}
+
+		.img {
+			height: 200px;
+			overflow: hidden;
+			border-radius: 13px 13px 0 0;
+		}
+
+		img {
+			max-width: 100%;
+			height: auto;
+			object-fit: cover;
+		}
+
+		.overlay {
+			position: absolute;
+			inset: 0;
+			pointer-events: none;
+			border-radius: 20px;
+			overflow: hidden;
+		}
+
+		.overlay.-gloss {
+			mix-blend-mode: screen;
+			opacity: 0.08;
+		}
+
+		.overlay.-gloss-move {
+			mix-blend-mode: overlay;
+			opacity: 1;
+		}
+
+		.overlay.-highlight {
+			mix-blend-mode: screen;
+			opacity: 0.3;
+			background-image: url(shine.webp);
+			background-size: 137% auto;
+			background-repeat: no-repeat;
+			animation: mask-slide 9s infinite alternate ease-in-out;
+		}
+
+		.shine {
+			mask-image: url(shine.webp);
+			mask-type: alpha;
+			mask-size: 120% auto;
+			mask-repeat: no-repeat;
+			mask-position: right bottom;
+			animation: mask-slide 9s infinite alternate ease-in-out;
+		}
+
+		.mosque {
+			mask-image: url(mosque.webp);
+			mask-type: alpha;
+			mask-size: cover;
+		}
+
+		.overlay-image {
+			height: 300px;
+			filter: brightness(1.5);
+			animation: brightness 5s infinite alternate ease-in-out;
+		}
+
+		#marble {
+			object-fit: none;
+			object-position: 0 0;
+			animation: marble-slide 67s infinite alternate ease-in-out;
+		}
+
+		@keyframes mask-slide {
+			0% {
+				mask-position: 100% 220%;
+				background-position: 100% 150%;
+			}
+
+			100% {
+				mask-position: 0% -120%;
+				background-position: 0% -50%;
+			}
+		}
+
+		@keyframes brightness {
+			0% {
+				filter: brightness(1.5);
+			}
+
+			100% {
+				filter: brightness(1.2);
+			}
+		}
+
+		@keyframes marble-slide {
+			0% {
+				object-position: 0 0;
+			}
+
+			100% {
+				object-position: 100% 100%;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div id="card">
+		<div class="content">
+			<div class="img">
+				<img alt="" src="photo.avif">
+			</div>
+			<h1>ᎩᎳᎧᎸᏔ</h1>
+			<p>ᏏᎡᏎᎡᏎᏓᏇᏕᏕᏈᎴᏲ</p>
+		</div>
+		<div class="overlay -gloss">
+			<div class="mosque">
+				<div class="overlay-image">
+					<img id="marble" alt="" src="marble.jpg">
+				</div>
+			</div>
+		</div>
+		<div class="overlay -gloss-move">
+			<div class="shine">
+				<div class="mosque">
+					<div class="overlay-image">
+						<img id="marble" alt="" src="marble.jpg">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="overlay -highlight">
+		</div>
+	</div>
+</body>
+
+</html>

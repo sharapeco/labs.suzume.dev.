@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>カスタム要素の slot</title>
+	<meta name="keywords" content="Shadow DOM,slot,custom element">
+	<meta name="description" content="slot を使ってカスタム要素のコンテンツを挿入する。">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+	<style>
+		.showcase {
+			min-height: 250px;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 3rem;
+			justify-content: center;
+			align-items: center;
+		}
+	</style>
+	<script defer type="module" src="main.js"></script>
+</head>
+
+<body>
+
+	<h1>カスタム要素の slot</h1>
+
+	<div class="showcase">
+		<x-manju size="100">
+			<x-koshian>こしあん<br>in まんじゅう (100)</x-koshian>
+		</x-manju>
+
+		<x-manju size="100">
+			<x-koshian volume="50000">こしあん (50000)<br>in まんじゅう (100)</x-koshian>
+		</x-manju>
+
+		<x-manju size="100">
+			<x-koshian volume="400">こしあん (1600)<br>in まんじゅう (100)</x-koshian>
+		</x-manju>
+	</div>
+
+</body>
+
+</html>

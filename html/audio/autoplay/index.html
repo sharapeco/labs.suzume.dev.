@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>音声の自動再生</title>
+	<meta name="description" content="音声が自動再生されるかどうかを調べます。">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+	<style>
+		.label {
+			display: inline-block;
+			padding: 0.25em 0.5em;
+			border-radius: 0.25em;
+			font-size: 0.75em;
+			line-height: 1;
+			vertical-align: middle;
+		}
+
+		.label-disabled {
+			background-color: #ccc;
+		}
+
+		.label-enabled {
+			background-color: #86ee86;
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>音声の自動再生</h1>
+
+	<audio src="audio.mp3" autoplay controls></audio>
+
+	<h2>テスト結果</h2>
+	<ul>
+		<li>Firefox 121.0.1 <span class="label label-disabled">無効</span></li>
+		<li>Safari 16.6.1 (16615.3.12.11.5, 16615) <span class="label label-disabled">無効</span></li>
+		<li>Google Chrome 120.0.6099.216（Official Build） （x86_64）<span class="label label-enabled">有効</span></li>
+	</ul>
+
+</body>
+
+</html>

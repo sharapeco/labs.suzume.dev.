@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Shadow DOMへのスタイル伝播</title>
+	<meta name="keywords" content="Shadow DOM,CSS">
+	<meta name="description" content="Light DOMからShadow DOMへのスタイルの伝播を試す。">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+	<h1>Shadow DOMへのスタイル伝播</h1>
+
+	<section>
+		<h2>参考</h2>
+		<ul>
+			<li><a href="https://qiita.com/alangdm/items/cec32f21151a9da3c3f2">Shadow DOM の特性を知って、使いこなすコツ #CSS -
+					Qiita</a></li>
+		</ul>
+
+		<blockquote>
+			<h2>継承されるプロパティ</h2>
+			<p>使う機会が比較的多いプロパティをまとめました。</p>
+			<ul>
+				<li>border-collapse</li>
+				<li>color</li>
+				<li>cursor</li>
+				<li>font</li>
+				<li>letter-spacing</li>
+				<li>line-height</li>
+				<li>list-style</li>
+				<li>quotes</li>
+				<li>text-align</li>
+				<li>text-shadow</li>
+				<li>visibility</li>
+				<li>word-spacing</li>
+			</ul>
+			<cite><a href="https://qiita.com/yokoyoko_115/items/d98ba66ab0d166aa7951">CSSの継承〜親から子へ受け継がれる意志〜</a></cite>
+		</blockquote>
+
+		<blockquote>
+			<p>CSS の問題として marigin はかわいいもので、より深刻なのは子要素への暗黙的な継承。BEM、CSS Modules、CSS in JS でも防げない。!important
+				をはびこらせる原因でもある。これを抑止する手段って検討されてるのかな。既にある？</p>
+			<p>— <code>all: initial</code> でしょうか？</p>
+			<cite><a href="https://akabeko.me/blog/2019/09/css-all/">CSS で子要素へのスタイル継承を制御する</a></cite>
+		</blockquote>
+	</section>
+
+	<section>
+		<h2>[section &gt; h2] 通常のDOM</h2>
+		<p>[section &gt; p] ここは通常のDOMです</p>
+	</section>
+
+	<section class="container">
+		<h2>[.container &gt; h2] 通常のDOM</h2>
+		<p>[.container &gt; p] ここは通常のDOMです</p>
+	</section>
+
+	<section>
+		<h2>[section &gt; h2] Shadow DOM #test1</h2>
+		<div id="test1"></div>
+	</section>
+
+	<section class="container">
+		<h2>[.container &gt; h2] Shadow DOM #test2</h2>
+		<div id="test2"></div>
+	</section>
+
+	<section>
+		<h2>[section &gt; h2] Shadow DOM (reset.css付き) #test3</h2>
+		<div id="test3"></div>
+	</section>
+
+	<section class="container">
+		<h2>[.container &gt; h2] Shadow DOM (reset.css付き) #test4</h2>
+		<div id="test4"></div>
+	</section>
+
+	<section class="light">
+		<h2>[.light &gt; h2] Shadow DOM (Light DOMからスタイルを適用) #test5</h2>
+		<div id="test5"></div>
+	</section>
+
+	<script type="module" src="app.js"></script>
+
+</body>
+
+</html>

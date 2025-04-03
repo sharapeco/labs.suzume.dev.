@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>download プロパティ</title>
+	<meta name="keywords" content="HTML,download">
+	<meta name="description" content="download プロパティを試す。クロスオリジンでは機能しない。">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+</head>
+
+<body>
+	<h1>download プロパティ</h1>
+	<p>
+		Same origin:
+		<a href="/assets/img/suzume-512x512.jpg" download="スズメ.jpg">スズメ.jpg</a>
+	</p>
+	<p>
+		Cross origin:
+		<a href="https://static.suzume.dev/img/suzume-512x512.jpg"
+			download="スズメ-crossorigin.jpg">スズメ-crossorigin.jpg</a>
+	</p>
+	<p>download プロパティによるダウンロードは、クロスオリジンでは機能しない。</p>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+:root {
+	color: #282c34;
+	background: #f5f5f5;
+}
+
+.container {
+	font-size: 150%;
+	font-weight: bold;
+	font-style: italic;
+	text-align: center;
+	text-transform: uppercase;
+	text-decoration: underline;
+	letter-spacing: 0.1em;
+	padding: 1em;
+	border: solid 0.25em #5ae;
+}
+
+h2 {
+	margin: 0;
+	font-size: 1.2rem;
+	font-weight: bold;
+	font-style: normal;
+	text-align: left;
+	text-transform: none;
+	text-decoration: none;
+	letter-spacing: 0;
+}
+
+p {
+	margin: 0;
+}
+
+section ~ section {
+	margin-top: 1.5em;
+}
+
+.light {
+	--bg: #eaf;
+}

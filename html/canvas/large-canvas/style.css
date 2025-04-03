@@ -1,0 +1,6 @@
+.view {
+	display: flex;
+	height: 500px;
+	margin: 1em 0;
+	background: #f4f6f8;
+}

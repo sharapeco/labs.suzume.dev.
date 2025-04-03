@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Babylon.jsで3Dモデルを表示</title>
+	<meta name="keywords" content="Babylon.js,3D,モデル">
+	<meta name="description" content="Babylon.jsで3Dモデルをcanvasに描画します。">
+	<style>
+		html,
+		body {
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			display: flex;
+			flex-direction: column;
+		}
+
+		#renderContainer {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+
+		#renderCanvas {
+			width: 640px;
+			height: 640px;
+			object-fit: contain;
+			touch-action: none;
+		}
+
+		#controls {
+			padding: 10px;
+			display: flex;
+			justify-content: center;
+			gap: 10px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="renderContainer">
+		<canvas id="renderCanvas" width="1280" height="1280"></canvas>
+	</div>
+
+	<script src="https://preview.babylonjs.com/babylon.js"></script>
+	<script src="https://cdn.babylonjs.com/loaders/babylon.glTFFileLoader.js"></script>
+	<script type="module" src="3d-model.js"></script>
+
+</body>
+
+</html>

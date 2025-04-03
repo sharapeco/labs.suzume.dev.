@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Workerのマルチスレッド動作</title>
+	<meta name="keywords" content="Web Worker,thread,multi-thread">
+	<meta name="description" content="1つの Worker インスタンスの中ではシングルスレッドで動作する。複数のインスタンスを作成することで、マルチスレッド動作を実現できる。">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+</head>
+
+<body>
+	<h1>Workerのマルチスレッド動作</h1>
+	<p>1つの Worker インスタンスの中ではシングルスレッドで動作します。</p>
+	<p>しかし、複数の Worker インスタンスを作成することで、マルチスレッド動作を実現できます。</p>
+	<pre id="output"></pre>
+	<script type="module">
+		const output = document.getElementById("output");
+		const workerA = new Worker(new URL("./worker.js", import.meta.url), { type: "module" });
+		workerA.onmessage = (e) => {
+			output.append(document.createTextNode(`${e.data}\n`));
+		};
+		const workerB = new Worker(new URL("./worker.js", import.meta.url), { type: "module" });
+		workerB.onmessage = (e) => {
+			output.append(document.createTextNode(`${e.data}\n`));
+		};
+
+		workerA.postMessage("A1");
+		workerA.postMessage("A2");
+		workerA.postMessage("A3");
+		workerB.postMessage("B1");
+		workerB.postMessage("B2");
+		workerB.postMessage("B3");
+	</script>
+</body>
+
+</html>

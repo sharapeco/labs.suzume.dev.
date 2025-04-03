@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>scrollイベントの追従性</title>
+	<meta name="keywords" content="scroll event">
+	<meta name="description" content="scrollイベントがどの程度の頻度で発生するか検証する。">
+	<link rel="stylesheet" href="/assets/bulma@1.0.0/css/bulma.min.css">
+	<style>
+		#scroll {
+			width: 100%;
+			height: 100px;
+			border: solid 1px #ccc;
+			overflow-x: auto;
+			overscroll-behavior-x: contain;
+		}
+
+		#scroll-inner {
+			width: 5000px;
+			height: 100%;
+			background-color: #f4f5f7;
+		}
+
+		#scroll-bar {
+			width: 100%;
+			height: 10px;
+			background-color: #eee;
+			position: relative;
+		}
+
+		#scroll-thumb {
+			height: 100%;
+			background-color: #555;
+			position: absolute;
+			left: 0;
+		}
+	</style>
+</head>
+
+<body>
+	<section class="section">
+		<div class="container is-fluid">
+			<header class="content">
+				<h1 class="title">
+					scrollイベントの追従性
+				</h1>
+				<p class="subtitle">
+					scrollイベントがどのくらいの頻度で発生するか検証する
+				</p>
+			</header>
+
+			<div class="box">
+				<div id="scroll">
+					<div id="scroll-inner"></div>
+				</div>
+				<div id="scroll-bar">
+					<div id="scroll-thumb"></div>
+				</div>
+			</div>
+
+			<div class="box">
+				<p id="message"></p>
+			</div>
+		</div>
+	</section>
+
+	<script type="module" src="scroll-event.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<title>HDRのAVIF画像を使う</title>
+	<meta name="keywords" content="AVIF,HDR,image">
+	<meta name="description" content="HDRのAVIF画像を使っていろいろできないか実験。いつの間にか使えなくなっていた。">
+	<link href="https://fonts.googleapis.com/css2?family=Zen+Antique&display=swap" rel="stylesheet">
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			height: 100vh;
+			text-align: center;
+			font-family: 'Zen Antique', serif;
+			color: #333;
+			background: #fff;
+		}
+
+		button {
+			position: relative;
+			appearance: none;
+			padding: .5em 3em;
+			font-family: inherit;
+			font-size: 20px;
+			background: #033ec7;
+			color: #fff;
+			border: none;
+			cursor: pointer;
+		}
+
+		button::after {
+			content: "";
+			display: block;
+			position: absolute;
+			inset: -3px;
+			border: solid 1px #0ff;
+			transition: all .4s ease-in-out;
+		}
+
+		button.hdr::before {
+			content: "";
+			display: block;
+			position: absolute;
+			inset: -6px;
+			z-index: -1;
+			background: url(sky.avif) no-repeat center center / cover;
+			filter: blur(12px);
+			opacity: .5;
+		}
+
+		button.hdr::after {
+			border-image: url(sky.avif) 30;
+		}
+
+		button:hover,
+		button:focus-visible {
+			outline: none;
+		}
+
+		.hdr-text {
+			background: url(sky.avif) no-repeat center center / cover;
+			background-clip: text;
+			-webkit-background-clip: text;
+			color: transparent;
+		}
+
+		p {
+			margin: 3rem 0;
+		}
+
+		.mt {
+			margin-top: 15rem;
+		}
+	</style>
+</head>
+
+<body>
+	<p>背景色は #FFFFFF です。</p>
+	<p>
+		<button>
+			私を見て！ <small>(SDR)</small>
+		</button>
+	</p>
+	<p>
+		<button class="hdr">
+			<span class="hdr-text">私を見て！ <small>(HDR)</small></span>
+		</button>
+	</p>
+	<p class="mt">
+		元画像：<img alt="sky.avif" src="sky.avif" width="30" height="30">
+	</p>
+
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>&lt;style&gt; 要素の内容にいろいろな文字列を入れてみる</title>
+<style>
+.red::after {
+	content: "<!-- Photos &amp; Videos -->";
+	foo: <style>;
+	bar: <a href="/tests/">aaa</a>;
+	color: red;
+	baz: qux</style>;
+}
+</style>
+<style type="text/css"><![CDATA[
+	.blue::after {
+		content: "<!-- Photos & Videos -->";
+		color: blue;
+	}
+]]></style>
+</head>
+<body>
+
+<h1>&lt;style&gt; 要素の内容にいろいろな文字列を入れてみる</h1>
+
+<div class="red"></div>
+
+<p>&lt;!-- Photos &amp;amp; Videos --&gt; と赤い文字で表示されるのがスタンダードらしい。要素の終了と解釈されるのは &lt;/style&gt; のみ</p>
+
+<div class="blue"></div>
+
+<p>style要素の内容をCDATAセクションとすることはできないようだ。</p>
+
+</body>
+</html>

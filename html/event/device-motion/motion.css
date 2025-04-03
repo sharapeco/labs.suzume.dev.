@@ -1,0 +1,60 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	min-height: 100vh;
+	min-height: 100svh;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-family: "FOT-筑紫オールドゴシック Std M", sans-serif;
+	color: #263238;
+	background: #fff;
+}
+
+#prologue {
+	width: 19em;
+	margin-bottom: 3em;
+	font-size: 12px;
+	line-height: 1.5;
+	opacity: 0.7;
+}
+
+#root {
+	position: relative;
+	width: 240px;
+	height: 361px;
+	margin-bottom: 1.5em;
+}
+
+#naruhito {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 240px;
+	height: calc(365px - 150px);
+	background: #fff;
+	overflow: hidden;
+}
+
+#description {
+	position: absolute;
+	z-index: -1;
+	bottom: 0;
+	left: 0;
+	width: 240px;
+	height: 140px;
+	padding: 0 15px;
+	font-family: "FOT-筑紫Aオールド明朝 Pr6N M", serif;
+	font-size: 14px;
+	line-height: 1.5;
+	text-align: justify;
+}

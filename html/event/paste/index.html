@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Paste Event</title>
+	<meta name="keywords" content="paste event,clipboard">
+	<meta name="description" content="Paste Eventオブジェクトの中身をコンソールに出力。">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+</head>
+
+<body>
+
+	<h1>Paste Event</h1>
+
+	<script>
+		const mimes = [
+			'text/rtf',
+			'text/plain',
+			'text/html',
+			'image/png',
+			'image/jpeg',
+			'image/gif',
+		];
+		function onPaste(event) {
+			console.log(event)
+
+			for (const mime of mimes) {
+				try {
+					const blob = event.clipboardData.getData(mime)
+					if (blob) {
+						console.log(mime, blob)
+						return
+					}
+				} catch (e) {
+					console.log(e)
+				}
+			}
+		}
+	</script>
+
+	<input type="text" id="input" onpaste="onPaste(event)">
+
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>スプライトを1枚1枚保存</title>
+	<meta name="keywords" content="image,application">
+	<meta name="description" content="拡大されて輪郭がぼやけている画像から、スプライトを1枚1枚保存する。">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+	<style>
+		.drop-area {
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: center center;
+		}
+
+		fieldset {
+			display: grid;
+			column-gap: 1em;
+			row-gap: 0.5em;
+			grid-template-columns: auto 1fr;
+			margin: 1em 0;
+		}
+
+		legend {
+			grid-column: 1 / -1;
+		}
+
+		fieldset>.form-group {
+			display: grid;
+			grid-column: span 2;
+			grid-template-columns: subgrid;
+		}
+
+		.form-group>label {
+			text-align: right;
+		}
+
+		.output {
+			display: grid;
+			gap: 2px;
+			image-rendering: crisp-edges;
+		}
+
+		.output a {
+			outline: 1px solid var(--border);
+		}
+
+		.output a:hover,
+		.output a:focus {
+			outline: 1px solid var(--highlight);
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>スプライトを1枚1枚保存</h1>
+
+	<script type="module" src="sprite.js"></script>
+
+</body>
+
+</html>

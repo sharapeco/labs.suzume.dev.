@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>カスタム要素に機能を後付けする</title>
+	<meta name="keywords" content="Shadow DOM,custom element">
+	<meta name="description" content="拡張機能のようなものを作り、カスタム要素に機能を後付けする。">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+	<style>
+		.showcase {
+			min-height: 250px;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 3rem;
+			justify-content: center;
+			align-items: center;
+		}
+	</style>
+	<script defer type="module" src="main.js"></script>
+</head>
+
+<body>
+
+	<h1>カスタム要素に機能を後付けする</h1>
+
+	<div class="showcase">
+		<x-manju size="100"></x-manju>
+
+		<x-manju size="100" x-koshian='{ "volume": 6400 }'></x-manju>
+	</div>
+
+</body>
+
+</html>

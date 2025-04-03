@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Vibration APIの例</title>
+	<meta name="keywords" content="Vibration API">
+	<meta name="description" content="Vibration API の例。">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+</head>
+
+<body>
+
+	<h1>Vibration APIの例</h1>
+
+	<button id="vibration">バイブレーション</button>
+
+	<script>
+		document.getElementById('vibration').addEventListener('click', function () {
+			navigator.vibrate([100, 50, 100, 50, 100]);
+		});
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CSS Color Spaces</title>
+	<meta name="keywords" content="CSS,color,color space">
+	<meta name="description" content="CSS Color Module Level 4 の高色域表示を試す。">
+	<style>
+		html,
+		body {
+			height: 100vh;
+			margin: 0;
+			padding: 0;
+		}
+
+		.container {
+			height: 100vh;
+			overflow: auto;
+			scroll-snap-type: block mandatory;
+		}
+
+		.page {
+			scroll-snap-align: center;
+			height: 100vh;
+			display: grid;
+			grid-template-columns: repeat(1, 1fr);
+		}
+
+		.cs {
+			position: relative;
+		}
+
+		.label {
+			position: absolute;
+			inset: .25em;
+			z-index: 1;
+			font-family: "Avenir Next", sans-serif;
+			color: #fff8;
+		}
+
+		.-vivid.-srgb {
+			background: linear-gradient(to right, #f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00);
+		}
+
+		.-vivid.-p3 {
+			background: linear-gradient(to right,
+					color(display-p3 1 0 0),
+					color(display-p3 1 1 0),
+					color(display-p3 0 1 0),
+					color(display-p3 0 1 1),
+					color(display-p3 0 0 1),
+					color(display-p3 1 0 1),
+					color(display-p3 1 0 0));
+		}
+
+		.-vivid.-rec2020 {
+			background: linear-gradient(to right,
+					color(rec2020 1 0 0),
+					color(rec2020 1 1 0),
+					color(rec2020 0 1 0),
+					color(rec2020 0 1 1),
+					color(rec2020 0 0 1),
+					color(rec2020 1 0 1),
+					color(rec2020 1 0 0));
+		}
+
+		.-vivid.-prophoto {
+			background: linear-gradient(to right,
+					color(prophoto-rgb 1 0 0),
+					color(prophoto-rgb 1 1 0),
+					color(prophoto-rgb 0 1 0),
+					color(prophoto-rgb 0 1 1),
+					color(prophoto-rgb 0 0 1),
+					color(prophoto-rgb 1 0 1),
+					color(prophoto-rgb 1 0 0));
+		}
+
+		.-soft.-srgb {
+			background: linear-gradient(to right, #e63333, #e6e633, #33e633, #33e6e6, #3333e6, #e633e6, #e63333);
+		}
+
+		.-soft.-p3 {
+			background: linear-gradient(to right,
+					color(display-p3 .9 .2 .2),
+					color(display-p3 .9 .9 .2),
+					color(display-p3 .2 .9 .2),
+					color(display-p3 .2 .9 .9),
+					color(display-p3 .2 .2 .9),
+					color(display-p3 .9 .2 .9),
+					color(display-p3 .9 .2 .2));
+		}
+
+		.-soft.-rec2020 {
+			background: linear-gradient(to right,
+					color(rec2020 .9 .2 .2),
+					color(rec2020 .9 .9 .2),
+					color(rec2020 .2 .9 .2),
+					color(rec2020 .2 .9 .9),
+					color(rec2020 .2 .2 .9),
+					color(rec2020 .9 .2 .9),
+					color(rec2020 .9 .2 .2));
+		}
+
+		.-soft.-prophoto {
+			background: linear-gradient(to right,
+					color(prophoto-rgb .9 .2 .2),
+					color(prophoto-rgb .9 .9 .2),
+					color(prophoto-rgb .2 .9 .2),
+					color(prophoto-rgb .2 .9 .9),
+					color(prophoto-rgb .2 .2 .9),
+					color(prophoto-rgb .9 .2 .9),
+					color(prophoto-rgb .9 .2 .2));
+		}
+
+		.-deep.-srgb {
+			background: linear-gradient(to right, #cc0000, #cccc00, #00cc00, #00cccc, #0000cc, #cc00cc, #cc0000);
+		}
+
+		.-deep.-p3 {
+			background: linear-gradient(to right,
+					color(display-p3 0.8 0 0),
+					color(display-p3 0.8 0.8 0),
+					color(display-p3 0 0.8 0),
+					color(display-p3 0 0.8 0.8),
+					color(display-p3 0 0 0.8),
+					color(display-p3 0.8 0 0.8),
+					color(display-p3 0.8 0 0));
+		}
+
+		.-deep.-rec2020 {
+			background: linear-gradient(to right,
+					color(rec2020 0.8 0 0),
+					color(rec2020 0.8 0.8 0),
+					color(rec2020 0 0.8 0),
+					color(rec2020 0 0.8 0.8),
+					color(rec2020 0 0 0.8),
+					color(rec2020 0.8 0 0.8),
+					color(rec2020 0.8 0 0));
+		}
+
+		.-deep.-prophoto {
+			background: linear-gradient(to right,
+					color(prophoto-rgb 0.8 0 0),
+					color(prophoto-rgb 0.8 0.8 0),
+					color(prophoto-rgb 0 0.8 0),
+					color(prophoto-rgb 0 0.8 0.8),
+					color(prophoto-rgb 0 0 0.8),
+					color(prophoto-rgb 0.8 0 0.8),
+					color(prophoto-rgb 0.8 0 0));
+		}
+
+		.-dark.-srgb {
+			background: linear-gradient(to right, #990000, #999900, #009900, #009999, #000099, #990099, #990000);
+		}
+
+		.-dark.-p3 {
+			background: linear-gradient(to right,
+					color(display-p3 0.6 0 0),
+					color(display-p3 0.6 0.6 0),
+					color(display-p3 0 0.6 0),
+					color(display-p3 0 0.6 0.6),
+					color(display-p3 0 0 0.6),
+					color(display-p3 0.6 0 0.6),
+					color(display-p3 0.6 0 0));
+		}
+
+		.-dark.-rec2020 {
+			background: linear-gradient(to right,
+					color(rec2020 0.6 0 0),
+					color(rec2020 0.6 0.6 0),
+					color(rec2020 0 0.6 0),
+					color(rec2020 0 0.6 0.6),
+					color(rec2020 0 0 0.6),
+					color(rec2020 0.6 0 0.6),
+					color(rec2020 0.6 0 0));
+		}
+
+		.-dark.-prophoto {
+			background: linear-gradient(to right,
+					color(prophoto-rgb 0.6 0 0),
+					color(prophoto-rgb 0.6 0.6 0),
+					color(prophoto-rgb 0 0.6 0),
+					color(prophoto-rgb 0 0.6 0.6),
+					color(prophoto-rgb 0 0 0.6),
+					color(prophoto-rgb 0.6 0 0.6),
+					color(prophoto-rgb 0.6 0 0));
+		}
+
+		.-grayscale.-srgb {
+			background: linear-gradient(to right, #000, #fff);
+		}
+
+		.-grayscale.-p3 {
+			background: linear-gradient(to right, color(display-p3 0 0 0), color(display-p3 1 1 1));
+		}
+
+		.-grayscale.-rec2020 {
+			background: linear-gradient(to right, color(rec2020 0 0 0), color(rec2020 1 1 1));
+		}
+
+		.-grayscale.-prophoto {
+			background: linear-gradient(to right, color(prophoto-rgb 0 0 0), color(prophoto-rgb 1 1 1));
+		}
+
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="page">
+			<div class="cs -vivid -srgb">
+				<span class="label">sRGB</span>
+			</div>
+			<div class="cs -vivid -p3">
+				<span class="label">Display P3</span>
+			</div>
+			<div class="cs -vivid -rec2020">
+				<span class="label">Rec. 2020</span>
+			</div>
+			<div class="cs -vivid -prophoto">
+				<span class="label">ProPhoto RGB</span>
+			</div>
+		</div>
+		<div class="page">
+			<div class="cs -soft -srgb">
+				<span class="label">sRGB</span>
+			</div>
+			<div class="cs -soft -p3">
+				<span class="label">Display P3</span>
+			</div>
+			<div class="cs -soft -rec2020">
+				<span class="label">Rec. 2020</span>
+			</div>
+			<div class="cs -soft -prophoto">
+				<span class="label">ProPhoto RGB</span>
+			</div>
+		</div>
+		<div class="page">
+			<div class="cs -deep -srgb">
+				<span class="label">sRGB</span>
+			</div>
+			<div class="cs -deep -p3">
+				<span class="label">Display P3</span>
+			</div>
+			<div class="cs -deep -rec2020">
+				<span class="label">Rec. 2020</span>
+			</div>
+			<div class="cs -deep -prophoto">
+				<span class="label">ProPhoto RGB</span>
+			</div>
+		</div>
+		<div class="page">
+			<div class="cs -dark -srgb">
+				<span class="label">sRGB</span>
+			</div>
+			<div class="cs -dark -p3">
+				<span class="label">Display P3</span>
+			</div>
+			<div class="cs -dark -rec2020">
+				<span class="label">Rec. 2020</span>
+			</div>
+			<div class="cs -dark -prophoto">
+				<span class="label">ProPhoto RGB</span>
+			</div>
+		</div>
+		<div class="page">
+			<div class="cs -grayscale -srgb">
+				<span class="label">sRGB</span>
+			</div>
+			<div class="cs -grayscale -p3">
+				<span class="label">Display P3</span>
+			</div>
+			<div class="cs -grayscale -rec2020">
+				<span class="label">Rec. 2020</span>
+			</div>
+			<div class="cs -grayscale -prophoto">
+				<span class="label">ProPhoto RGB</span>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

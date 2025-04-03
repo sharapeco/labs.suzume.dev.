@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>モッチーポップの合成フォント</title>
+	<meta name="keywords" content="font,@font-face,合成フォント">
+	<meta name="description" content="モッチーポップとLINE Seed JPの合成フォント。">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+	<style>
+		@font-face {
+			font-family: "MochiyPopBold";
+			src: url("MochiyPopOne-OTF-ExtraBold.otf") format("opentype");
+			unicode-range: U+00-FF, U+3040-30FF, U+FF00-FFEF;
+		}
+
+		@font-face {
+			font-family: "MochiyPopBold";
+			src: url("LINESeedJP_OTF_Bd.otf") format("opentype");
+			unicode-range: U+2000-206F, U+3100-FEFF;
+		}
+
+		@font-face {
+			font-family: "MochiyPopExtraBold";
+			src: url("MochiyPopOne-OTF-ExtraBold.otf") format("opentype");
+			unicode-range: U+00-FF, U+3040-30FF, U+FF00-FFEF;
+		}
+
+		@font-face {
+			font-family: "MochiyPopExtraBold";
+			src: url("LINESeedJP_OTF_Eb.otf") format("opentype");
+			unicode-range: U+2000-206F, U+3100-FEFF;
+		}
+
+		@font-face {
+			font-family: "MochiyPopBoldAdjust";
+			src: url("MochiyPopOne-OTF-ExtraBold.otf") format("opentype");
+			unicode-range: U+00-FF, U+3040-30FF, U+FF00-FFEF;
+			size-adjust: 90%;
+		}
+
+		@font-face {
+			font-family: "MochiyPopBoldAdjust";
+			src: url("LINESeedJP_OTF_Bd.otf") format("opentype");
+			unicode-range: U+2000-206F, U+3100-FEFF;
+		}
+
+		body {
+			color: #333;
+			background: #fefefe;
+		}
+
+		h2 {
+			margin: 5rem 0 1.5rem;
+			font-size: 100%;
+			opacity: 0.7;
+		}
+
+		p {
+			font-size: 2rem;
+			line-height: 1.5;
+			border: 1px solid #ccc;
+		}
+
+		.bold {
+			font-family: "MochiyPopBold", sans-serif;
+		}
+
+		.extrabold {
+			font-family: "MochiyPopExtraBold", sans-serif;
+		}
+
+		.bold-adjust {
+			font-family: "MochiyPopBoldAdjust", sans-serif;
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>モッチーポップの合成フォント</h1>
+
+	<h2>モッチーポップ + LINE Seed JP Bold</h2>
+	<p class="bold">
+		グーテンベルクが活版印刷術を発明したのは1440年代後半といわれています。それから約20年後の1465年、その新しい技術はアルプスを越え、イタリアに伝わりました。ドイツから来たSweynheimとPannartzという二人がローマの北にあるSubiacoという村の修道院に滞在し、そこでイタリア最初の印刷物をつくったのです。
+	</p>
+	<pre>@font-face {
+	font-family: "MochiyPopBold";
+	src: url("MochiyPopOne-OTF-ExtraBold.otf") format("opentype");
+	unicode-range: U+00-FF, U+3040-30FF, U+FF00-FFEF;
+}
+
+@font-face {
+	font-family: "MochiyPopBold";
+	src: url("LINESeedJP_OTF_Bd.otf") format("opentype");
+	unicode-range: U+2000-206F, U+3100-FEFF;
+}</pre>
+
+	<h2>モッチーポップ + LINE Seed JP ExtraBold</h2>
+	<p class="extrabold">
+		グーテンベルクが活版印刷術を発明したのは1440年代後半といわれています。それから約20年後の1465年、その新しい技術はアルプスを越え、イタリアに伝わりました。ドイツから来たSweynheimとPannartzという二人がローマの北にあるSubiacoという村の修道院に滞在し、そこでイタリア最初の印刷物をつくったのです。
+	</p>
+	<pre>@font-face {
+	font-family: "MochiyPopExtraBold";
+	src: url("MochiyPopOne-OTF-ExtraBold.otf") format("opentype");
+	unicode-range: U+00-FF, U+3040-30FF, U+FF00-FFEF;
+}
+
+@font-face {
+	font-family: "MochiyPopExtraBold";
+	src: url("LINESeedJP_OTF_Eb.otf") format("opentype");
+	unicode-range: U+2000-206F, U+3100-FEFF;
+}</pre>
+
+	<h2>モッチーポップ (サイズ調整) + LINE Seed JP Bold</h2>
+	<p class="bold-adjust">
+		グーテンベルクが活版印刷術を発明したのは1440年代後半といわれています。それから約20年後の1465年、その新しい技術はアルプスを越え、イタリアに伝わりました。ドイツから来たSweynheimとPannartzという二人がローマの北にあるSubiacoという村の修道院に滞在し、そこでイタリア最初の印刷物をつくったのです。
+	</p>
+	<pre>@font-face {
+	font-family: "MochiyPopBoldAdjust";
+	src: url("MochiyPopOne-OTF-ExtraBold.otf") format("opentype");
+	unicode-range: U+00-FF, U+3040-30FF, U+FF00-FFEF;
+	size-adjust: 90%;
+	ascent-override: 95%;
+	descent-override: 5%;
+}
+
+@font-face {
+	font-family: "MochiyPopBoldAdjust";
+	src: url("LINESeedJP_OTF_Bd.otf") format("opentype");
+	unicode-range: U+2000-206F, U+3100-FEFF;
+}</pre>
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Canvasの高さをコンテナに応じて調整する</title>
+	<meta name="keywords" content="Canvas">
+	<meta name="description" content="Canvasの高さをコンテナに応じて調整します。">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+	<style>
+		.box+.box {
+			margin-top: 1em;
+		}
+
+		.container {
+			width: 80%;
+			height: 80vh;
+		}
+
+		canvas {
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Canvasの高さをコンテナに応じて調整する</h1>
+
+	<div class="box">
+		<div class="container">
+			<canvas class="canvas" width="512" height="512"></canvas>
+		</div>
+	</div>
+
+	<script type="module" src="canvas-size.js"></script>
+
+</body>
+
+</html>

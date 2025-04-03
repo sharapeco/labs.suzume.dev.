@@ -31,8 +31,6 @@ function createContentCard(content) {
 		{
 			class: "content-card",
 			href: content.url,
-			target: "_blank",
-			rel: "noopener noreferrer",
 		},
 		[
 			h("h2", { class: "content-title" }, content.title),
@@ -118,5 +116,6 @@ function renderContents(contents) {
 
 // アプリケーションの初期化
 document.addEventListener("DOMContentLoaded", () => {
-	document.body.appendChild(createUI());
+	const container = document.querySelector(".container") ?? document.body;
+	container.appendChild(createUI());
 });

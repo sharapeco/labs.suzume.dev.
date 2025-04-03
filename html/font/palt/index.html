@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>palt は kern とともに</title>
+	<meta name="keywords" content="font,font-feature-settings,palt,kern,カーニング">
+	<meta name="description" content="代替プロポーショナルメトリクスを設定する際には、カーニングを有効にしたほうが良いことの説明。">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&family=Noto+Sans+JP:wght@300&display=swap">
+	<style>
+		body {
+			margin-inline: auto;
+			padding-inline: 1em;
+			max-width: 1000px;
+			color: #333;
+			background: #fefefe;
+		}
+
+		h2 {
+			margin-top: 3em;
+		}
+
+		dt {
+			width: 8em;
+			align-self: center;
+		}
+
+		dd {
+			margin: 0;
+		}
+
+		dd > p {
+			margin: 0;
+			font-size: 2rem;
+			line-height: 1.5;
+			border: 1px solid #ccc;
+		}
+
+		.noto {
+			font-family: "Noto Sans JP", sans-serif;
+		}
+
+		.kern-auto {
+			font-kerning: auto;
+		}
+
+		.no-kern {
+			font-kerning: none;
+		}
+
+		.palt {
+			font-feature-settings: "palt";
+		}
+
+		.palt-kern {
+			font-feature-settings: "palt", "kern";
+		}
+
+		.results {
+			margin-top: 2em;
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+			padding: 2em;
+			background: #f8f8f8;
+		}
+		.results > div {
+			font-size: 87.5%;
+		}
+		.results img {
+			margin-top: 0.25em;
+			width: 100%;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<h1>palt は kern とともに</h1>
+		<p>既存の和文フォントの palt（代替プロポーショナルメトリクス）は、kern（カーニング）とセットで使うことを前提として詰め情報が設定されています。</p>
+		<p>この和文カーニング情報が意図せず和文等幅の箇所に適用されるケースや、<code>font-feature-settings: "palt"</code> を指定して和文カーニング情報が使われないケースがあるので注意が必要です。</p>
+		<p>和文プロポーショナル用のカーニング情報が kern フィーチャーではなく palt フィーチャーで設定されていればこのような問題は起こらないのですが、互換性やサポートの問題もあり、フォント製品側を修正することは難しいです。</p>
+
+		<h2>和文等幅</h2>
+
+		<dl class="flex gap-1">
+			<dt>カーニング 自動</dt>
+			<dd class="flex-1">
+				<p class="kern-auto">ポポペピプププピアノ協奏曲</p>
+			</dd>
+			<dd class="flex-1">
+				<p class="noto kern-auto">ポポペピプププピアノ協奏曲</p>
+			</dd>
+		</dl>
+
+		<dl class="flex gap-1">
+			<dt>カーニング オフ</dt>
+			<dd class="flex-1">
+				<p class="no-kern">ポポペピプププピアノ協奏曲</p>
+			</dd>
+			<dd class="flex-1">
+				<p class="noto no-kern">ポポペピプププピアノ協奏曲</p>
+			</dd>
+		</dl>
+
+		<div class="results">
+			<div>
+				Chrome 134: カーニングを自動にすると和文が等幅にならない
+				<img src="chrome-134.jpg" alt="">
+			</div>
+			<div>
+				Firefox 137: 意図通りの表示
+				<img src="firefox-137.jpg" alt="">
+			</div>
+			<div>
+				Safari 16.6: 意図通りの表示
+				<img src="safari-16.6.jpg" alt="">
+			</div>
+		</div>
+
+		<ul>
+			<li>Chrome で和文等幅にするには <code>font-kerning: none</code> を指定する</li>
+		</ul>
+
+		<h2>プロポーショナルメトリクス</h2>
+
+		<dl class="flex gap-1">
+			<dt>palt のみ</dt>
+			<dd class="flex-1">
+				<p class="palt">ポポペピプププピアノ協奏曲</p>
+			</dd>
+			<dd class="flex-1">
+				<p class="noto palt">ポポペピプププピアノ協奏曲</p>
+			</dd>
+		</dl>
+
+		<dl class="flex gap-1">
+			<dt>palt と kern</dt>
+			<dd class="flex-1">
+				<p class="palt-kern kern-auto">ポポペピプププピアノ協奏曲</p>
+			</dd>
+			<dd class="flex-1">
+				<p class="noto palt-kern kern-auto">ポポペピプププピアノ協奏曲</p>
+			</dd>
+		</dl>
+
+		<div class="results">
+			<div>
+				Chrome 134: 意図通りの表示
+				<img src="palt-chrome-134.jpg" alt="">
+			</div>
+			<div>
+				Firefox 137: カーニングを有効にしないと、意図通りの詰めにならない
+				<img src="palt-firefox-137.jpg" alt="">
+			</div>
+			<div>
+				Safari 16.6: プロポーショナルメトリクスでカーニングを有効にする方法がない
+				<img src="palt-safari-16.6.jpg" alt="">
+			</div>
+		</div>
+
+		<ul>
+			<li>Firefox でフォント制作者が意図するプロポーショナルメトリクスにするには <code>font-feature-settings: "palt", "kern"</code> を指定する</li>
+			<li>Safari 16.6 では正しく表示する方法がない</li>
+		</ul>
+	</div>
+</body>
+
+</html>

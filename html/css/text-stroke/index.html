@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Text Stroke with CSS/SVG</title>
+	<meta name="keywords" content="CSS,SVG,text-stroke">
+	<meta name="description" content="CSS vs SVGで文字の縁取り。">
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		html,
+		body {
+			height: 100vh;
+		}
+
+		body {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			color: #c61c53;
+			background: #fac5d8;
+		}
+
+		.svg-template {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 100vh;
+		}
+
+		div {
+			margin: 1em 0;
+			text-align: center;
+			line-height: 1.2;
+			font-family: Amaranth, sans-serif;
+			font-size: 500%;
+			font-weight: 700;
+		}
+
+		@media (max-width: 659px) {
+			div {
+				font-size: 13vw;
+			}
+		}
+
+		.css-stroke {
+			position: relative;
+		}
+
+		.css-stroke::after {
+			content: attr(aria-label);
+			display: block;
+			position: absolute;
+			z-index: -1;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			stroke-linejoin: round;
+			-webkit-text-stroke: 0.25em #fff;
+			text-shadow: 0 0 .25em rgba(0, 0, 0, .25);
+		}
+
+		.svg-stroke {
+			filter: url(#rich-border);
+		}
+	</style>
+</head>
+
+<body>
+	<svg class="svg-template">
+		<filter id="rich-border">
+			<feGaussianBlur in="SourceGraphic" result="border1" stdDeviation="4" />
+			<feColorMatrix in="border1" result="border2" type="matrix"
+				values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 255 0" />
+			<feGaussianBlur in="border2" result="shadow1" stdDeviation="4" />
+			<feColorMatrix in="shadow1" result="shadow2" type="matrix"
+				values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.2 0" />
+			<feMerge>
+				<feMergeNode in="shadow2" />
+				<feMergeNode in="border2" />
+				<feMergeNode in="SourceGraphic" />
+			</feMerge>
+		</filter>
+	</svg>
+
+	<div class="css-stroke" aria-label="Suzume Kawaii">Suzume Kawaii</div>
+	<div class="svg-stroke">Suzume Kawaii</div>
+
+</body>
+
+</html>

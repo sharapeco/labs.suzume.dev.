@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Emoji Picker</title>
+</head>
+
+<body>
+
+	<script>
+		const qs = (q, p) => (p || document).querySelector(q)
+	</script>
+
+	<textarea id="t"></textarea>
+	<button type="button" id="b">🐤</button>
+
+	<script>
+			(() => {
+				const textarea = qs('#t')
+				const button = qs('#b')
+				button.addEventListener('click', () => {
+					textarea.focus()
+					document.execCommand('insertText', false, button.textContent)
+				})
+			})()
+	</script>
+
+	<div id="t2" style="min-height: 200px; border: solid 1px #ddd" contenteditable></div>
+	<button type="button" id="b2">🐤</button>
+
+	<script>
+			(() => {
+				const textarea = qs('#t2')
+				const button = qs('#b2')
+				button.addEventListener('click', () => {
+					textarea.focus()
+					const node = document.createTextNode(button.textContent)
+					textarea.appendChild(node)
+				})
+			})()
+	</script>
+
+	<!--
+		orig = document.execCommand; document.execCommand = (...a) => { console.log('trap', a); return orig.apply(document, a) }
+
+		insertBefore_ = document.__proto__.insertBefore; document.__proto__.insertBefore = function (...a) { console.log('trap insertBefore', a); return insertBefore_.apply(this, a) }
+	-->
+
+</body>
+
+</html>
