@@ -1,4 +1,4 @@
-import { readFile, readdir, writeFile } from "node:fs/promises";
+import { readFile, readdir, writeFile, mkdir } from "node:fs/promises";
 import { join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import * as cheerio from "cheerio";
@@ -90,8 +90,10 @@ async function main() {
 		}
 	}
 
+	const outputDir = join(htmlDir, "build");
+	await mkdir(outputDir, { recursive: true });
 	const output = `export const contents = ${JSON.stringify(contents, null, 2)};\n`;
-	await writeFile(join(htmlDir, "build/index.js"), output);
+	await writeFile(join(outputDir, "index.js"), output);
 }
 
 main().catch(console.error);
