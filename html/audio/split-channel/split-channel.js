@@ -25,7 +25,7 @@ function main() {
 	});
 	document.body.append(dropArea, controls.element, controlPanel);
 
-	player.load("/assets/audio/allegro-vivace.mp3");
+	player.load("https://static.suzume.dev/labs/audio/allegro-vivace.mp3");
 }
 
 function createControlPanel() {

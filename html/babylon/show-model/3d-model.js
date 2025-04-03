@@ -62,7 +62,7 @@ function main() {
 	);
 
 	// 初期モデルの読み込みを dragon.glb から変更
-	loadModel("./dragon.glb");
+	loadModel("https://static.suzume.dev/labs/3d/models/dragon.glb");
 
 	scene.registerBeforeRender(update);
 

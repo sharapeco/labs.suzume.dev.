@@ -3,7 +3,7 @@ const progress = document.getElementById("progress");
 const statusText = document.getElementById("status");
 
 function chime() {
-	const audio = new Audio("./chime.mp3");
+	const audio = new Audio("https://static.suzume.dev/labs/audio/kibitaki-young.mp3");
 	audio.play();
 }
 

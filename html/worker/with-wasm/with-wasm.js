@@ -54,7 +54,7 @@ worker.onerror = function onerror(err) {
 
 async function main() {
 	const abortController = new AbortController();
-	const audioData = await loadAudioData("/assets/audio/4fen.mp3", () => {}, abortController.signal);
+	const audioData = await loadAudioData("https://static.suzume.dev/labs/audio/4fen.mp3", () => {}, abortController.signal);
 	const decoded = await decodeAudio(audioData, { sampleRate });
 	buffer = decoded.getChannelData(0);
 	duration = decoded.duration;
