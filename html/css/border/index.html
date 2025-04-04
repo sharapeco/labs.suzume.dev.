@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>borderのテスト</title>
+	<meta name="keywords" content="CSS,border">
+	<meta name="description" content="いろいろなborderのテスト">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+	<style>
+		:root {
+			--c1: #79d1f9;
+			--c2: #80d8c0;
+			--c3: #e89897;
+			--c4: #f4d17f;
+			--width: 200px;
+			--height: 160px;
+		}
+
+		.list {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 30px;
+		}
+
+		.b {
+			box-sizing: border-box;
+			width: var(--width);
+			height: var(--height);
+			padding: 10px;
+			border-style: solid;
+			border-width: 10px;
+			border-top-color: var(--c1);
+			border-right-color: var(--c2);
+			border-bottom-color: var(--c3);
+			border-left-color: var(--c4);
+		}
+
+		.style-dotted {
+			border-style: dotted;
+		}
+
+		.style-dashed {
+			border-style: dashed;
+		}
+
+		.style-double {
+			border-style: double;
+		}
+
+		.bt-2 {
+			border-top-width: 20px;
+		}
+
+		.bt-3 {
+			border-top-width: 30px;
+		}
+
+		.bt-4 {
+			border-top-width: 40px;
+		}
+
+		.bt-5 {
+			border-top-width: 50px;
+		}
+
+		.br-2 {
+			border-right-width: 20px;
+		}
+
+		.br-3 {
+			border-right-width: 30px;
+		}
+
+		.br-4 {
+			border-right-width: 40px;
+		}
+
+		.bb-2 {
+			border-bottom-width: 20px;
+		}
+
+		.bb-3 {
+			border-bottom-width: 30px;
+		}
+
+		.radius-1 {
+			border-radius: 10px;
+		}
+
+		.radius-2 {
+			border-radius: 20px;
+		}
+
+		.radius-3 {
+			border-radius: 30px;
+		}
+
+		.radius-15 {
+			border-radius: 150px;
+		}
+
+		.relative {
+			position: relative;
+			width: var(--width);
+			height: var(--height);
+		}
+		.relative > * {
+			position: absolute;
+			left: 0;
+			top: 0;
+			mix-blend-mode: multiply;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>borderのテスト</h1>
+
+	<div class="list">
+		<div class="b">
+			10px 10px 10px 10px
+		</div>
+
+		<div class="b bt-4 br-3 bb-2">
+			40px 30px 20px 10px
+		</div>
+
+		<div class="b radius-1">
+			10px 10px 10px 10px; radius 10px
+		</div>
+
+		<div class="b bt-4 br-3 bb-2 radius-1">
+			40px 30px 20px 10px; radius 10px
+		</div>
+
+		<div class="b radius-3">
+			10px 10px 10px 10px; radius 30px
+		</div>
+
+		<div class="b bt-4 br-3 bb-2 radius-3">
+			40px 30px 20px 10px; radius 30px
+		</div>
+
+		<div class="b radius-15">
+			10px 10px 10px 10px; radius 150px
+		</div>
+
+		<div class="b bt-4 br-3 bb-2 radius-15">
+			40px 30px 20px 10px; radius 150px
+		</div>
+
+		<div class="relative">
+			<div class="b bt-4 br-3 bb-2 radius-2">
+				40px 30px 20px 10px; radius 20px
+			</div>
+			<div class="b bt-4 br-3 bb-2 radius-15">
+				40px 30px 20px 10px; radius 150px
+			</div>
+		</div>
+
+		<div class="b style-dotted">
+			10px 10px 10px 10px
+		</div>
+
+		<div class="b style-dotted bt-4 br-3 bb-2">
+			40px 30px 20px 10px
+		</div>
+
+		<div class="b style-dotted radius-1">
+			10px 10px 10px 10px; radius 10px
+		</div>
+
+		<div class="b style-dotted bt-4 br-3 bb-2 radius-1">
+			40px 30px 20px 10px; radius 10px
+		</div>
+
+		<div class="b style-dotted radius-3">
+			10px 10px 10px 10px; radius 30px
+		</div>
+
+		<div class="b style-dotted bt-4 br-3 bb-2 radius-3">
+			40px 30px 20px 10px; radius 30px
+		</div>
+
+		<div class="b style-dotted radius-15">
+			10px 10px 10px 10px; radius 150px
+		</div>
+
+		<div class="b style-dotted bt-4 br-3 bb-2 radius-15">
+			40px 30px 20px 10px; radius 150px
+		</div>
+	</div>
+</body>
+
+</html>
