@@ -3,6 +3,7 @@
 	--fore: #333;
 	--back: #fff;
 	--highlight: #007bff;
+	--highlight-invert: #fff;
 	--border: #ddd;
 	--border-highlight: var(--highlight);
 	--radius: 0.25em;

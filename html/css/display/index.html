@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>display プロパティの全ての値</title>
+	<meta name="keywords" content="CSS,display,block,inline,flex,grid,flow,flow-root">
+	<meta name="description" content="display プロパティ取りうる全ての値と、getComputedStyle() で取得できる値を確認する。">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+	<style>
+		.section {
+			margin: 3em 0;
+		}
+
+		.section h2 {
+			font-size: 112%;
+			font-family: monospace;
+		}
+
+		.result {
+			display: inline-block;
+			margin-left: 0.5em;
+			padding: 0.5em;
+			font-size: 87.5%;
+			line-height: 1;
+			color: var(--highlight-invert);
+			background: var(--highlight);
+			border-radius: 0.25em;
+		}
+
+		.box {
+			display: block;
+			padding: 1em;
+			border: solid 1px #888;
+		}
+
+		.item {
+			display: inline-block;
+			padding: 0.25em 0.5em;
+			border: solid 1px #888;
+			border-radius: 0.25em;
+			background: #f8f8f8;
+		}
+
+		.block {
+			display: block;
+		}
+
+		.inline {
+			display: inline;
+		}
+
+		.inline-block {
+			display: inline-block;
+		}
+
+		.flex {
+			display: flex;
+		}
+
+		.inline-flex {
+			display: inline-flex;
+		}
+
+		.grid {
+			display: grid;
+		}
+
+		.inline-grid {
+			display: inline-grid;
+		}
+
+		.flow-root {
+			display: flow-root;
+		}
+
+		.none {
+			display: none;
+		}
+
+		.contents {
+			display: contents;
+		}
+
+		.block--flex {
+			display: block flex;
+		}
+
+		.block--flow {
+			display: block flow;
+		}
+
+		.block--flow-root {
+			display: block flow-root;
+		}
+
+		.block--grid {
+			display: block grid;
+		}
+
+		.inline--flex {
+			display: inline flex;
+		}
+
+		.inline--flow {
+			display: inline flow;
+		}
+
+		.inline--flow-root {
+			display: inline flow-root;
+		}
+
+		.inline--grid {
+			display: inline grid;
+		}
+
+		.table {
+			display: table;
+		}
+
+		.table-row {
+			display: table-row;
+		}
+
+		.list-item {
+			display: list-item;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>display プロパティの全ての値</h1>
+	<p>display プロパティ取りうる全ての値と、getComputedStyle() で取得できる値を確認します。</p>
+
+	<div class="section">
+		<h2>block</h2>
+		<div class="box">
+			鳥啼く声す
+			<div class="item">夢覚ませ</div>
+			<div class="item">見よ明け渡る</div>
+			東を
+		</div>
+	</div>
+
+	<script type="module" src="display.js"></script>
+
+</body>
+
+</html>
