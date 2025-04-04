@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>インライン要素が表示される位置と大きさを取得</title>
+	<meta name="keywords" content="getClientRects,getBoundingClientRect,offset,DOM,DOMRect,DOMRectList">
+	<meta name="description" content="offsetLeft, offsetTop, offsetWidth, offsetHeight と getClientRects(), getBoundingClientRect() を比較。">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+	<style>
+		:root {
+			--back: #f0f0f0;
+			--highlight: #77dbff;
+		}
+
+		h2 {
+			font-size: 120%;
+			font-family: monospace;
+		}
+
+		.block {
+			width: 20em;
+			margin: 1em 0;
+			padding: 1em 1.25em;
+			font-size: 140%;
+			line-height: 1.75;
+			background-color: #fff;
+			border: solid 1px #ccc;
+		}
+
+		.block p {
+			margin: 0;
+		}
+
+		.block span {
+			text-decoration: underline;
+		}
+
+		.border-bottom span {
+			text-decoration: none;
+			border-bottom: dotted 4px #fc0;
+		}
+
+		.border-top span {
+			text-decoration: none;
+			border-top: dotted 4px #fc0;
+		}
+
+		.border-all span {
+			text-decoration: none;
+			border: dotted 4px #fc0;
+		}
+
+		.clip-border-box span {
+			background-clip: border-box;
+			background-color: var(--highlight);
+		}
+
+		.clip-padding-box span {
+			background-clip: padding-box;
+			background-color: var(--highlight);
+		}
+
+		.clip-content-box span {
+			background-clip: content-box;
+			background-color: var(--highlight);
+		}
+
+		.clip-text span {
+			background-clip: text;
+			background-color: var(--highlight);
+		}
+
+		.clip-border-area span {
+			background-clip: border-area;
+			background-color: var(--highlight);
+		}
+
+		.block .mark {
+			position: absolute;
+			mix-blend-mode: multiply;
+			opacity: 0.5;
+			background-color: #f0bec4;
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>インライン要素が表示される位置と大きさを取得</h1>
+
+	<h2>offsetLeft, offsetTop, offsetWidth, offsetHeight</h2>
+
+	<div class="block offset">
+		<p>空が温んで遠くの山々は紫に淡く霞み、<span>麓の並木には</span>白く星が輝いている。その星はやがて流れ星となり、小川に天の川を作っている。</p>
+	</div>
+
+	<h2>getBoundingClientRect()</h2>
+
+	<div class="block bounding-box">
+		<p>空が温んで遠くの山々は紫に淡く霞み、<span>麓の並木には</span>白く星が輝いている。その星はやがて流れ星となり、小川に天の川を作っている。</p>
+	</div>
+
+	<h2>getClientRects()</h2>
+
+	<div class="block rects">
+		<p>空が温んで遠くの山々は紫に淡く霞み、<span>麓の並木には</span>白く星が輝いている。その星はやがて流れ星となり、小川に天の川を作っている。</p>
+	</div>
+
+	<div class="block rects border-top">
+		<p>空が温んで遠くの山々は紫に淡く霞み、<span>麓の並木には</span>白く星が輝いている。その星はやがて流れ星となり、小川に天の川を作っている。</p>
+	</div>
+
+	<div class="block rects border-bottom">
+		<p>空が温んで遠くの山々は紫に淡く霞み、<span>麓の並木には</span>白く星が輝いている。その星はやがて流れ星となり、小川に天の川を作っている。</p>
+	</div>
+
+	<div class="block rects border-all">
+		<p>空が温んで遠くの山々は紫に淡く霞み、<span>麓の並木には</span>白く星が輝いている。その星はやがて流れ星となり、小川に天の川を作っている。</p>
+	</div>
+
+	<div class="block rects border-all clip-border-box">
+		<p>background-clip: border-box;</p>
+		<p>空が温んで遠くの山々は紫に淡く霞み、<span>麓の並木には</span>白く星が輝いている。その星はやがて流れ星となり、小川に天の川を作っている。</p>
+	</div>
+
+	<div class="block rects border-all clip-padding-box">
+		<p>background-clip: padding-box;</p>
+		<p>空が温んで遠くの山々は紫に淡く霞み、<span>麓の並木には</span>白く星が輝いている。その星はやがて流れ星となり、小川に天の川を作っている。</p>
+	</div>
+
+	<div class="block rects border-all clip-content-box">
+		<p>background-clip: content-box;</p>
+		<p>空が温んで遠くの山々は紫に淡く霞み、<span>麓の並木には</span>白く星が輝いている。その星はやがて流れ星となり、小川に天の川を作っている。</p>
+	</div>
+
+	<div class="block rects border-all clip-text">
+		<p>background-clip: text;</p>
+		<p>空が温んで遠くの山々は紫に淡く霞み、<span>麓の並木には</span>白く星が輝いている。その星はやがて流れ星となり、小川に天の川を作っている。</p>
+	</div>
+
+	<div class="block rects border-all clip-border-area">
+		<p>background-clip: border-area;</p>
+		<p>空が温んで遠くの山々は紫に淡く霞み、<span>麓の並木には</span>白く星が輝いている。その星はやがて流れ星となり、小川に天の川を作っている。</p>
+	</div>
+
+	<script type="module" src="client-rects.js"></script>
+
+</body>
+
+</html>
