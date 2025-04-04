@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>overflow-clip-margin のテスト</title>
+	<meta name="keywords" content="CSS,overflow,overflow-clip-margin">
+	<meta name="description" content="overflow-clip-margin のテスト">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+	<style>
+		h2 {
+			margin-top: 80px;
+			font-size: 120%;
+		}
+
+		.box {
+			width: 200px;
+			height: 100px;
+			padding: 20px;
+			overflow: clip;
+			overflow-clip-margin: 40px;
+			border: solid 1px #888;
+			background: #feeec0;
+			background-clip: content-box;
+		}
+
+		.box>p {
+			margin: 0;
+		}
+
+		.visual-box {
+			overflow-clip-margin: content-box 40px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>overflow-clip-margin のテスト</h1>
+
+	<div class="flex flex-wrap gap-3">
+		<div class="item">
+			<pre>.box {
+	width: 200px;
+	height: 100px;
+	padding: 20px;
+	overflow: clip;
+	overflow-clip-margin: 40px;
+	border: solid 1px #888;
+	background: #feeec0;
+	background-clip: content-box;
+}</pre>
+
+			<div class="box">
+				<p>Supercalifragilisticexpialidocious</p>
+				<p>
+					祇園精舍の鐘の声、諸行無常の響きあり。
+					娑羅双樹の花の色、盛者必衰の理をあらはす。
+					驕れる人も久しからず、ただ春の夜の夢のごとし。
+					猛き者もつひにはほろびぬ、ひとへに風の前の塵に同じ。
+				</p>
+			</div>
+		</div>
+		<div class="item">
+			<pre>.visual-box {
+	width: 200px;
+	height: 100px;
+	padding: 20px;
+	overflow: clip;
+	overflow-clip-margin: content-box 40px;
+	border: solid 1px #888;
+	background: #feeec0;
+	background-clip: content-box;
+}</pre>
+
+			<div class="box visual-box">
+				<p>Supercalifragilisticexpialidocious</p>
+				<p>
+					祇園精舍の鐘の声、諸行無常の響きあり。
+					娑羅双樹の花の色、盛者必衰の理をあらはす。
+					驕れる人も久しからず、ただ春の夜の夢のごとし。
+					猛き者もつひにはほろびぬ、ひとへに風の前の塵に同じ。
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<h2>参考</h2>
+	<ul>
+		<li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/overflow">overflow - CSS: カスケーディングスタイルシート | MDN</a>
+		</li>
+		<li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/overflow-clip-margin">overflow-clip-margin - CSS:
+				カスケーディングスタイルシート | MDN</a></li>
+		<li><a href="https://zenn.dev/ruri14/articles/c85b4fcc6783c7">【CSS】Safari 16.0でフルサポートされたoverflow: clipが便利</a>
+		</li>
+	</ul>
+</body>
+
+</html>
