@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>white-space プロパティのテスト</title>
+	<meta name="keywords" content="CSS,white-space,white-space-collapse,text-wrap,nowrap,pre,pre-wrap,pre-line,break-spaces">
+	<meta name="description" content="white-space プロパティの値による空白や改行の表示の違いを確認する。">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+	<style>
+		.section {
+			margin: 3em 0;
+		}
+
+		.section h2 {
+			font-size: 112%;
+			font-family: monospace;
+		}
+
+		.result {
+			display: inline-block;
+			margin-left: 0.5em;
+			padding: 0.5em;
+			font-size: 87.5%;
+			line-height: 1;
+			color: var(--highlight-invert);
+			background: var(--highlight);
+			border-radius: 0.25em;
+		}
+
+		.box {
+			display: block;
+			padding: 1em;
+			border: solid 1px #888;
+			margin-bottom: 1em;
+		}
+
+		.item {
+			position: relative;
+			display: block;
+			margin-right: 1em;
+			margin-bottom: 1em;
+		}
+
+		.item h3 {
+			font-size: 100%;
+			font-family: monospace;
+			margin: 0 0 0.5em 0;
+		}
+
+		.item-content {
+			width: 20em;
+			padding: 0.5em;
+			border: solid 1px #ddd;
+			background: #f8f8f8;
+			font-family: "ヒラギノ角ゴシック", "Yu Gothic", sans-serif;
+			white-space: inherit;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>white-space プロパティのテスト</h1>
+	<p>white-space プロパティの値による空白や改行の表示の違いを確認します。</p>
+	<main></main>
+
+	<script type="module" src="white-space.js"></script>
+</body>
+
+</html>
