@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>background-clip プロパティのテスト</title>
+	<meta name="keywords" content="CSS,background-clip,clip,border-box,padding-box,content-box">
+	<meta name="description" content="CSSのbackground-clipプロパティの各値の動作をテストするデモページです。">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+	<style>
+		.test-container {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			/* Adjusted minmax */
+			gap: 2em;
+			margin-bottom: 3em;
+		}
+
+		.test-box {
+			padding: 10px;
+			background: linear-gradient(to right, #fffbd5, #9fd8e3, #1f4e80);
+			color: #333;
+			font-weight: bold;
+			min-height: 6em;
+			/* Ensure enough height to see effects */
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+		}
+
+		/* --- Border/Radius Scenarios --- */
+		.radius-zero {
+			border: 10px dashed rgba(0, 0, 0, 0.3);
+			border-radius: 0;
+		}
+
+		.radius-equal {
+			border: 15px dashed rgba(0, 0, 0, 0.3);
+			/* Use a different border width */
+			border-radius: 20px;
+		}
+
+		.varying-radius {
+			border: 10px dashed rgba(0, 0, 0, 0.3);
+			border-top-left-radius: 5px;
+			border-top-right-radius:  5px 15px;
+			border-bottom-left-radius: 40px;
+			border-bottom-right-radius: 60px 40px;
+		}
+
+		.width-gt-radius {
+			border: 30px dashed rgba(0, 0, 0, 0.3);
+			border-radius: 20px;
+		}
+
+		.width-eq-radius {
+			border: 20px dashed rgba(0, 0, 0, 0.3);
+			border-radius: 20px;
+		}
+
+		.width-lt-radius {
+			border: 10px dashed rgba(0, 0, 0, 0.3);
+			border-radius: 30px;
+		}
+
+		/* --- Background Clip Values --- */
+		.clip-border {
+			background-clip: border-box;
+		}
+
+		.clip-padding {
+			background-clip: padding-box;
+		}
+
+		.clip-content {
+			background-clip: content-box;
+		}
+
+		.clip-text {
+			background-clip: text;
+			-webkit-background-clip: text;
+			color: transparent;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>background-clip プロパティのテスト</h1>
+
+	<section>
+		<h2>border-radius: 0</h2>
+		<div class="test-container">
+			<div class="test-box radius-zero clip-border">
+				background-clip: border-box
+			</div>
+			<div class="test-box radius-zero clip-padding">
+				background-clip: padding-box
+			</div>
+			<div class="test-box radius-zero clip-content">
+				background-clip: content-box
+			</div>
+			<div class="test-box radius-zero clip-text">
+				background-clip: text
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<h2>border-radius: 20px (4辺等しい)</h2>
+		<div class="test-container">
+			<div class="test-box radius-equal clip-border">
+				background-clip: border-box
+			</div>
+			<div class="test-box radius-equal clip-padding">
+				background-clip: padding-box
+			</div>
+			<div class="test-box radius-equal clip-content">
+				background-clip: content-box
+			</div>
+			<div class="test-box radius-equal clip-text">
+				background-clip: text
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<h2>異なる border-radius 値</h2>
+		<div class="test-container">
+			<div class="test-box varying-radius clip-border">
+				background-clip: border-box
+			</div>
+			<div class="test-box varying-radius clip-padding">
+				background-clip: padding-box
+			</div>
+			<div class="test-box varying-radius clip-content">
+				background-clip: content-box
+			</div>
+			<div class="test-box varying-radius clip-text">
+				background-clip: text
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<h2>border-width(30px) &gt; border-radius(20px)</h2>
+		<div class="test-container">
+			<div class="test-box width-gt-radius clip-border">
+				background-clip: border-box
+			</div>
+			<div class="test-box width-gt-radius clip-padding">
+				background-clip: padding-box
+			</div>
+			<div class="test-box width-gt-radius clip-content">
+				background-clip: content-box
+			</div>
+			<div class="test-box width-gt-radius clip-text">
+				background-clip: text
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<h2>border-width(20px) = border-radius(20px)</h2>
+		<div class="test-container">
+			<div class="test-box width-eq-radius clip-border">
+				background-clip: border-box
+			</div>
+			<div class="test-box width-eq-radius clip-padding">
+				background-clip: padding-box
+			</div>
+			<div class="test-box width-eq-radius clip-content">
+				background-clip: content-box
+			</div>
+			<div class="test-box width-eq-radius clip-text">
+				background-clip: text
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<h2>border-width(10px) + padding(10px) &lt; border-radius(40px)</h2>
+		<div class="test-container">
+			<div class="test-box width-lt-radius clip-border">
+				background-clip: border-box
+			</div>
+			<div class="test-box width-lt-radius clip-padding">
+				background-clip: padding-box
+			</div>
+			<div class="test-box width-lt-radius clip-content">
+				background-clip: content-box
+			</div>
+			<div class="test-box width-lt-radius clip-text">
+				background-clip: text
+			</div>
+		</div>
+	</section>
+
+	<script type="module" src="index.js"></script>
+</body>
+
+</html>
