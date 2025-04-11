@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>インライン要素にゴテゴテ装飾する</title>
+	<meta name="keywords" content="CSS,インライン要素,inline,background,border,box-shadow">
+	<meta name="description" content="インライン要素に背景色や枠線、影をつけるとどうレンダリングされるかを確認">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+	<style>
+		.test-cases {
+			width: 20em;
+			font-size: 125%;
+			line-height: 2;
+			padding: 1px 0;
+			border-left: 1px solid #aaa;
+			border-right: 1px solid #aaa;
+		}
+
+		p {
+			margin: 1.75em 0;
+		}
+		p::before {
+			content: attr(data-class);
+			display: block;
+			font-size: 0.875rem;
+			font-weight: bold;
+			color: #777;
+		}
+
+		.background-color {
+			background-color: #fde724;
+		}
+
+		.background-gradient {
+			background: linear-gradient(90deg, #3c4d8a, #4080a0, #4fc368, #fde724);
+		}
+
+		.border-bottom {
+			border-bottom: 2px solid #4080a0;
+		}
+
+		.border {
+			border: 4px solid #4080a0;
+		}
+
+		.outline {
+			outline: 4px solid #4fc36880;
+		}
+
+		.outline-offset {
+			outline: 4px solid #4fc36880;
+			outline-offset: 14px;
+		}
+
+		.box-shadow {
+			box-shadow: 0 0 5px 0 #4080a0;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>インライン要素にゴテゴテ装飾する</h1>
+
+	<div class="test-cases">
+		<p>日本語の組版は実に難しく、<span>ひらがな、カタカナ、漢字</span>だけでなく、<span>アラビア数字 (012)、ラテン文字 (ABCabc)、時にはギリシャ文字 (αβγ)
+			</span>を使うこともある。</p>
+	</div>
+
+	<script>
+		const template = document.querySelector(".test-cases p");
+		const container = template.parentElement;
+		const classes = [
+			"background-color",
+			"background-gradient",
+			"border-bottom",
+			"border",
+			"outline",
+			"outline-offset",
+			"box-shadow",
+			"box-shadow border-bottom",
+		];
+		for (const cls of classes) {
+			const el = template.cloneNode(true);
+			el.dataset.class = cls;
+			for (const span of el.querySelectorAll("span")) {
+				span.className = cls;
+			}
+			container.appendChild(el);
+		}
+	</script>
+</body>
+
+</html>
