@@ -29,6 +29,13 @@
 			color: #777;
 		}
 
+		.vertical {
+			height: 20em;
+			writing-mode: vertical-rl;
+			border: solid 1px #aaa;
+			border-style: solid none;
+		}
+
 		.background-color {
 			background-color: #fde724;
 		}
@@ -37,8 +44,8 @@
 			background: linear-gradient(90deg, #3c4d8a, #4080a0, #4fc368, #fde724);
 		}
 
-		.border-bottom {
-			border-bottom: 2px solid #4080a0;
+		.border-block-end {
+			border-block-end: 2px solid #4080a0;
 		}
 
 		.border {
@@ -79,16 +86,26 @@
 		const classes = [
 			"background-color",
 			"background-gradient",
-			"border-bottom",
+			"border-block-end",
 			"border",
 			"outline",
 			"outline-offset",
 			"box-shadow",
-			"box-shadow border-bottom",
+			"box-shadow border-block-end",
 			"radius",
 		];
 		for (const cls of classes) {
 			const el = template.cloneNode(true);
+			el.dataset.class = cls;
+			for (const span of el.querySelectorAll("span")) {
+				span.className = cls;
+			}
+			container.appendChild(el);
+		}
+
+		for (const cls of classes) {
+			const el = template.cloneNode(true);
+			el.classList.add("vertical");
 			el.dataset.class = cls;
 			for (const span of el.querySelectorAll("span")) {
 				span.className = cls;
