@@ -5,7 +5,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Canvas vs CSS 影の描画</title>
-	<meta name="keywords" content="Canvas,CanvasRenderingContext2D,shadowOffsetX,shadowOffsetY,shadowBlur,shadowColor,box-shadow,background-clip">
+	<meta name="keywords"
+		content="Canvas,CanvasRenderingContext2D,shadowOffsetX,shadowOffsetY,shadowBlur,shadowColor,box-shadow,background-clip">
 	<meta name="description" content="CanvasRenderingContext2D と CSS の box-shadow でどのように影が描画されるかを確認する。">
 	<link rel="stylesheet" href="/assets/css/fundamentals.css">
 	<style>
@@ -30,6 +31,25 @@
 			height: 200px;
 		}
 	</style>
+	<script>
+		const dpr = window.devicePixelRatio;
+
+		function initContext(canvas) {
+			canvas.width = canvas.clientWidth * dpr;
+			canvas.height = canvas.clientHeight * dpr;
+
+			const ctx = canvas.getContext("2d");
+			ctx.scale(dpr, dpr);
+			return ctx;
+		}
+
+		function setShadow(ctx, offsetX, offsetY, blur, color) {
+			ctx.shadowOffsetX = offsetX * dpr;
+			ctx.shadowOffsetY = offsetY * dpr;
+			ctx.shadowBlur = blur * dpr;
+			ctx.shadowColor = color;
+		}
+	</script>
 </head>
 
 <body>
@@ -51,11 +71,8 @@
 	<script>
 		(() => {
 			const canvas = document.getElementById("canvas1");
-			const ctx = canvas.getContext("2d");
-			ctx.shadowOffsetX = 10;
-			ctx.shadowOffsetY = 10;
-			ctx.shadowBlur = 10;
-			ctx.shadowColor = "#3c4d8a";
+			const ctx = initContext(canvas);
+			setShadow(ctx, 10, 10, 10, "#3c4d8a");
 			ctx.fillStyle = "#fde724";
 			ctx.fillRect(50, 50, 100, 100);
 		})();
@@ -76,15 +93,12 @@
 	<script>
 		(() => {
 			const canvas = document.getElementById("canvas2");
-			const ctx = canvas.getContext("2d");
+			const ctx = initContext(canvas);
 
 			ctx.fillStyle = "#4080a0";
 			ctx.fillRect(100, 20, 75, 50);
 
-			ctx.shadowOffsetX = 10;
-			ctx.shadowOffsetY = 10;
-			ctx.shadowBlur = 10;
-			ctx.shadowColor = "#3c4d8a";
+			setShadow(ctx, 10, 10, 10, "#3c4d8a");
 			ctx.fillStyle = "#fde72480";
 			ctx.fillRect(50, 50, 100, 100);
 		})();
@@ -104,7 +118,7 @@
 	<script>
 		(() => {
 			const canvas = document.getElementById("canvas3");
-			const ctx = canvas.getContext("2d");
+			const ctx = initContext(canvas);
 
 			ctx.fillStyle = "#4080a0";
 			ctx.fillRect(100, 20, 75, 50);
@@ -112,16 +126,51 @@
 			ctx.save();
 			ctx.clip(new Path2D("M 0 0 l 200 0 l 0 200 l -200 0 Z M 50 50 l 0 100 l 100 0 l 0 -100 Z"));
 
-			ctx.shadowOffsetX = 10;
-			ctx.shadowOffsetY = 10;
-			ctx.shadowBlur = 10;
-			ctx.shadowColor = "#3c4d8a";
+			setShadow(ctx, 10, 10, 10, "#3c4d8a");
 			ctx.fillStyle = "#000";
 			ctx.fillRect(50, 50, 100, 100);
 
 			ctx.restore();
 
-			ctx.shadowColor = "transparent";
+			setShadow(ctx, 0, 0, 0, "transparent");
+			ctx.fillStyle = "#fde72480";
+			ctx.fillRect(50, 50, 100, 100);
+		})();
+	</script>
+
+	<div class="test-case">
+		<canvas id="canvas4" width="200" height="200"></canvas>
+		<div>
+			<div
+				style="position: absolute; left: 100px; top: 20px; width: 75px; height: 50px; background-color: #4080a0">
+			</div>
+			<div
+				style="position: absolute; left: 50px; top: 50px; width: 100px; height: 100px; background-color: #fde72480; box-shadow: 10px 10px 0 0 #3c4d8a, 5px 20px 10px 0 #f076f4;">
+			</div>
+		</div>
+	</div>
+	<script>
+		(() => {
+			const canvas = document.getElementById("canvas4");
+			const ctx = initContext(canvas);
+
+			ctx.fillStyle = "#4080a0";
+			ctx.fillRect(100, 20, 75, 50);
+
+			ctx.save();
+			ctx.clip(new Path2D("M 0 0 l 200 0 l 0 200 l -200 0 Z M 50 50 l 0 100 l 100 0 l 0 -100 Z"));
+
+			setShadow(ctx, 5, 20, 10, "#f076f4");
+			ctx.fillStyle = "#000";
+			ctx.fillRect(50, 50, 100, 100);
+
+			setShadow(ctx, 10, 10, 0, "#3c4d8a");
+			ctx.fillStyle = "#000";
+			ctx.fillRect(50, 50, 100, 100);
+
+			ctx.restore();
+
+			setShadow(ctx, 0, 0, 0, "transparent");
 			ctx.fillStyle = "#fde72480";
 			ctx.fillRect(50, 50, 100, 100);
 		})();
