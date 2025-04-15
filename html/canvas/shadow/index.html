@@ -43,7 +43,7 @@
 			return ctx;
 		}
 
-		function setShadow(ctx, offsetX, offsetY, blur, color) {
+		function setShadowStyle(ctx, offsetX, offsetY, blur, color) {
 			ctx.shadowOffsetX = offsetX * dpr;
 			ctx.shadowOffsetY = offsetY * dpr;
 			ctx.shadowBlur = blur * dpr;
@@ -72,7 +72,7 @@
 		(() => {
 			const canvas = document.getElementById("canvas1");
 			const ctx = initContext(canvas);
-			setShadow(ctx, 10, 10, 10, "#3c4d8a");
+			setShadowStyle(ctx, 10, 10, 10, "#3c4d8a");
 			ctx.fillStyle = "#fde724";
 			ctx.fillRect(50, 50, 100, 100);
 		})();
@@ -98,7 +98,7 @@
 			ctx.fillStyle = "#4080a0";
 			ctx.fillRect(100, 20, 75, 50);
 
-			setShadow(ctx, 10, 10, 10, "#3c4d8a");
+			setShadowStyle(ctx, 10, 10, 10, "#3c4d8a");
 			ctx.fillStyle = "#fde72480";
 			ctx.fillRect(50, 50, 100, 100);
 		})();
@@ -126,13 +126,13 @@
 			ctx.save();
 			ctx.clip(new Path2D("M 0 0 l 200 0 l 0 200 l -200 0 Z M 50 50 l 0 100 l 100 0 l 0 -100 Z"));
 
-			setShadow(ctx, 10, 10, 10, "#3c4d8a");
+			setShadowStyle(ctx, 10, 10, 10, "#3c4d8a");
 			ctx.fillStyle = "#000";
 			ctx.fillRect(50, 50, 100, 100);
 
 			ctx.restore();
 
-			setShadow(ctx, 0, 0, 0, "transparent");
+			setShadowStyle(ctx, 0, 0, 0, "transparent");
 			ctx.fillStyle = "#fde72480";
 			ctx.fillRect(50, 50, 100, 100);
 		})();
@@ -160,17 +160,58 @@
 			ctx.save();
 			ctx.clip(new Path2D("M 0 0 l 200 0 l 0 200 l -200 0 Z M 50 50 l 0 100 l 100 0 l 0 -100 Z"));
 
-			setShadow(ctx, 5, 20, 10, "#f076f4");
+			setShadowStyle(ctx, 5, 20, 10, "#f076f4");
 			ctx.fillStyle = "#000";
 			ctx.fillRect(50, 50, 100, 100);
 
-			setShadow(ctx, 10, 10, 0, "#3c4d8a");
+			setShadowStyle(ctx, 10, 10, 0, "#3c4d8a");
 			ctx.fillStyle = "#000";
 			ctx.fillRect(50, 50, 100, 100);
 
 			ctx.restore();
 
-			setShadow(ctx, 0, 0, 0, "transparent");
+			setShadowStyle(ctx, 0, 0, 0, "transparent");
+			ctx.fillStyle = "#fde72480";
+			ctx.fillRect(50, 50, 100, 100);
+		})();
+	</script>
+
+	<div class="test-case">
+		<canvas id="canvas5" width="200" height="200"></canvas>
+		<div>
+			<div
+				style="position: absolute; left: 50px; top: 50px; width: 100px; height: 100px; background-color: #fde72480; box-shadow: 10px 10px 5px 20px #3c4d8a">
+			</div>
+		</div>
+		<p>spread</p>
+	</div>
+	<script>
+		(() => {
+			const canvas = document.getElementById("canvas5");
+			const ctx = initContext(canvas);
+
+			const offsetX = 10;
+			const offsetY = 10;
+			const blur = 5;
+			const spread = 20;
+
+			ctx.save();
+			ctx.clip(new Path2D("M 0 0 l 200 0 l 0 200 l -200 0 Z M 50 50 l 0 100 l 100 0 l 0 -100 Z"));
+
+			ctx.fillStyle = "#3c4d8a";
+			ctx.fillRect(50 + offsetX - spread + blur, 50 + offsetY - spread + blur, 100 + 2 * (spread - blur), 100 + 2 * (spread - blur));
+
+			setShadowStyle(ctx, 0, 0, blur, "#3c4d8a");
+			ctx.fillStyle = "#3c4d8a";
+			ctx.fillRect(50 + offsetX - spread + blur, 50 + offsetY - spread + blur, 100 + 2 * (spread - blur), 100 + 2 * (spread - blur));
+			ctx.shadowBlur = 10;
+			ctx.fillRect(50 + offsetX - spread + blur, 50 + offsetY - spread + blur, 100 + 2 * (spread - blur), 100 + 2 * (spread - blur));
+			ctx.shadowBlur = 15;
+			ctx.fillRect(50 + offsetX - spread + blur, 50 + offsetY - spread + blur, 100 + 2 * (spread - blur), 100 + 2 * (spread - blur));
+
+			ctx.restore();
+
+			setShadowStyle(ctx, 0, 0, 0, "transparent");
 			ctx.fillStyle = "#fde72480";
 			ctx.fillRect(50, 50, 100, 100);
 		})();
