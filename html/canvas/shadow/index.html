@@ -63,8 +63,9 @@
 	<div class="test-case">
 		<canvas id="canvas1" width="200" height="200"></canvas>
 		<div>
-			<div
-				style="position: absolute; left: 50px; top: 50px; width: 100px; height: 100px; background-color: #fde724; box-shadow: 10px 10px 10px 0 #3c4d8a;">
+			<div style="position: absolute; left: 50px; top: 50px; width: 100px; height: 100px;
+				background-color: #fde724;
+				box-shadow: 10px 10px 10px 0 #3c4d8a;">
 			</div>
 		</div>
 	</div>
@@ -81,11 +82,13 @@
 	<div class="test-case">
 		<canvas id="canvas2" width="200" height="200"></canvas>
 		<div>
-			<div
-				style="position: absolute; left: 100px; top: 20px; width: 75px; height: 50px; background-color: #4080a0">
+			<div style="position: absolute; left: 100px; top: 20px; width: 75px; height: 50px;
+				background-color: #4080a0">
 			</div>
 			<div
-				style="position: absolute; left: 50px; top: 50px; width: 100px; height: 100px; background-color: #fde72480; box-shadow: 10px 10px 10px 0 #3c4d8a; box-sizing: border-box; background-clip: padding-box; border: dashed 5px #fc0">
+				style="position: absolute; left: 50px; top: 50px; width: 100px; height: 100px;
+				background-color: #fde72480;
+				box-shadow: 10px 10px 10px 0 #3c4d8a; box-sizing: border-box; background-clip: padding-box; border: dashed 5px #fc0">
 			</div>
 		</div>
 		<p>CSS の box-shadow は border-box の外側のみに描画される</p>
@@ -107,11 +110,12 @@
 	<div class="test-case">
 		<canvas id="canvas3" width="200" height="200"></canvas>
 		<div>
-			<div
-				style="position: absolute; left: 100px; top: 20px; width: 75px; height: 50px; background-color: #4080a0">
+			<div style="position: absolute; left: 100px; top: 20px; width: 75px; height: 50px;
+				background-color: #4080a0">
 			</div>
-			<div
-				style="position: absolute; left: 50px; top: 50px; width: 100px; height: 100px; background-color: #fde72480; box-shadow: 10px 10px 10px 0 #3c4d8a;">
+			<div style="position: absolute; left: 50px; top: 50px; width: 100px; height: 100px;
+				background-color: #fde72480;
+				box-shadow: 10px 10px 10px 0 #3c4d8a;">
 			</div>
 		</div>
 	</div>
@@ -141,11 +145,12 @@
 	<div class="test-case">
 		<canvas id="canvas4" width="200" height="200"></canvas>
 		<div>
-			<div
-				style="position: absolute; left: 100px; top: 20px; width: 75px; height: 50px; background-color: #4080a0">
+			<div style="position: absolute; left: 100px; top: 20px; width: 75px; height: 50px;
+				background-color: #4080a0">
 			</div>
-			<div
-				style="position: absolute; left: 50px; top: 50px; width: 100px; height: 100px; background-color: #fde72480; box-shadow: 10px 10px 0 0 #3c4d8a, 5px 20px 10px 0 #f076f4;">
+			<div style="position: absolute; left: 50px; top: 50px; width: 100px; height: 100px;
+				background-color: #fde72480;
+				box-shadow: 10px 10px 0 0 #3c4d8a, 5px 20px 10px 0 #f076f4;">
 			</div>
 		</div>
 	</div>
@@ -179,8 +184,9 @@
 	<div class="test-case">
 		<canvas id="canvas5" width="200" height="200"></canvas>
 		<div>
-			<div
-				style="position: absolute; left: 50px; top: 50px; width: 100px; height: 100px; background-color: #fde72480; box-shadow: 10px 10px 5px 20px #3c4d8a">
+			<div style="position: absolute; left: 50px; top: 50px; width: 100px; height: 100px;
+				background-color: #fde72480;
+				box-shadow: 10px 10px 5px 20px #3c4d8a">
 			</div>
 		</div>
 		<p>spread</p>
@@ -195,23 +201,19 @@
 			const blur = 5;
 			const spread = 20;
 
+			// box-shadow
 			ctx.save();
 			ctx.clip(new Path2D("M 0 0 l 200 0 l 0 200 l -200 0 Z M 50 50 l 0 100 l 100 0 l 0 -100 Z"));
 
+			ctx.save();
 			ctx.fillStyle = "#3c4d8a";
-			ctx.fillRect(50 + offsetX - spread + blur, 50 + offsetY - spread + blur, 100 + 2 * (spread - blur), 100 + 2 * (spread - blur));
-
-			setShadowStyle(ctx, 0, 0, blur, "#3c4d8a");
-			ctx.fillStyle = "#3c4d8a";
-			ctx.fillRect(50 + offsetX - spread + blur, 50 + offsetY - spread + blur, 100 + 2 * (spread - blur), 100 + 2 * (spread - blur));
-			ctx.shadowBlur = 10;
-			ctx.fillRect(50 + offsetX - spread + blur, 50 + offsetY - spread + blur, 100 + 2 * (spread - blur), 100 + 2 * (spread - blur));
-			ctx.shadowBlur = 15;
-			ctx.fillRect(50 + offsetX - spread + blur, 50 + offsetY - spread + blur, 100 + 2 * (spread - blur), 100 + 2 * (spread - blur));
+			ctx.filter = `blur(${blur}px)`;
+			ctx.fillRect(50 + offsetX - spread, 50 + offsetY - spread, 100 + 2 * spread, 100 + 2 * spread);
+			ctx.restore();
 
 			ctx.restore();
 
-			setShadowStyle(ctx, 0, 0, 0, "transparent");
+			// background
 			ctx.fillStyle = "#fde72480";
 			ctx.fillRect(50, 50, 100, 100);
 		})();
