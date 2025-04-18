@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Canvasに多重のクリッピングパスを設定する</title>
+	<meta name="keywords" content="Canvas,CanvasRenderingContext2D,clip">
+	<meta name="description" content="Canvasに多重のクリッピングパスを設定するとどうなるか検証します。">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+	<style>
+		canvas {
+			border: 1px solid #ddd;
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>Canvasに多重のクリッピングパスを設定する</h1>
+
+	<p>clipPath1: 矩形 (50, 50) 100x100)</p>
+	<canvas id="canvas1" width="200" height="200"></canvas>
+
+	<p>clipPath2: 矩形 (100, 100) 100x100)</p>
+	<canvas id="canvas2" width="200" height="200"></canvas>
+
+	<p>clipPath1, clipPath2 を入れ子のコンテキストで使用</p>
+	<canvas id="canvas3" width="200" height="200"></canvas>
+
+	<p>clipPath1, clipPath2 を同一のコンテキストで使用</p>
+	<canvas id="canvas4" width="200" height="200"></canvas>
+
+	<script type="module">
+		const indigo = '#3C4D8A';
+		const canvas1 = document.getElementById('canvas1');
+		const canvas2 = document.getElementById('canvas2');
+		const canvas3 = document.getElementById('canvas3');
+		const canvas4 = document.getElementById('canvas4');
+
+		const ctx1 = canvas1.getContext('2d');
+		const ctx2 = canvas2.getContext('2d');
+		const ctx3 = canvas3.getContext('2d');
+		const ctx4 = canvas4.getContext('2d');
+
+		const clipPath1 = new Path2D();
+		clipPath1.rect(50, 50, 100, 100);
+
+		const clipPath2 = new Path2D();
+		clipPath2.rect(100, 100, 100, 100);
+
+		ctx1.save();
+		ctx1.clip(clipPath1);
+		ctx1.fillStyle = indigo;
+		ctx1.fillRect(0, 0, 200, 200);
+		ctx1.restore();
+
+		ctx2.save();
+		ctx2.clip(clipPath2);
+		ctx2.fillStyle = indigo;
+		ctx2.fillRect(0, 0, 200, 200);
+		ctx2.restore();
+
+		ctx3.save();
+		ctx3.clip(clipPath1);
+		ctx3.save();
+		ctx3.clip(clipPath2);
+		ctx3.fillStyle = indigo;
+		ctx3.fillRect(0, 0, 200, 200);
+		ctx3.restore();
+		ctx3.restore();
+
+		ctx4.save();
+		ctx4.clip(clipPath1);
+		ctx4.clip(clipPath2);
+		ctx4.fillStyle = indigo;
+		ctx4.fillRect(0, 0, 200, 200);
+		ctx4.restore();
+	</script>
+
+</body>
+
+</html>
