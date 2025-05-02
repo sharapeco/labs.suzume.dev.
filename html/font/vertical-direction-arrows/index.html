@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>縦組時の矢印</title>
+	<meta name="keywords" content="vert, 縦書き, 縦組み, 矢印">
+	<meta name="description" content="縦組で矢印の向きがどうなるか検証">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+	<style>
+		body {
+			writing-mode: vertical-rl;
+		}
+		.c {
+			margin: 2em 0;
+		}
+		.c h2 {
+			font-size: 0.75rem;
+			opacity: 0.5;
+		}
+		p {
+			margin: 0;
+			font-size: 140%;
+		}
+	</style>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&family=Dela+Gothic+One&family=Kaisei+Tokumin&family=Klee+One&family=Kosugi+Maru&family=M+PLUS+1p&family=Noto+Sans+JP:wght@100..900&family=Sawarabi+Gothic&family=Shippori+Mincho&family=Zen+Old+Mincho&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+	<h1>縦組時の矢印</h1>
+
+	<div class="c">
+		<h2>Font Name</h2>
+		<p>↑↓←→「あー……」＜⁑ ⁂ † § ‼ ⁇ ⁈ ⁉ ； € 〰＞</p>
+	</div>
+
+	<script>
+		const template = document.querySelector(".c");
+		const fonts = [
+			"Hiragino Kaku Gothic ProN",
+			"YuMincho",
+			"Meiryo",
+			"MS Gothic",
+			"A P-OTF Ryumin Pr6N",
+			"DNPShueiMinPr6N",
+			"FOT-TsukuAOldMin Pr6",
+			"Ro Hon MinSink Pr5N",
+			"Toppan Bunkyu Mincho",
+			"Kozuka Mincho Pr6N",
+			"Bunyu Mincho Bunrei StdN",
+			"Noto Sans JP",
+			"BIZ UDPGothic",
+			"Zen Old Mincho",
+			"Shippori Mincho",
+			"Klee One",
+			"Kosugi Maru",
+			"M PLUS 1p",
+			"Dela Gothic One",
+		]
+		for (const font of fonts) {
+			const clone = template.cloneNode(true);
+			clone.querySelector("h2").textContent = font;
+			clone.querySelector("p").style.fontFamily = `"${font}"`;
+			document.body.appendChild(clone);
+		}
+		template.remove();
+	</script>
+
+</body>
+
+</html>
