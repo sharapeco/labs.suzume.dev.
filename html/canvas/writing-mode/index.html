@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Canvasと縦書き</title>
+	<meta name="keywords" content="canvas,writing-mode,vertical-rl,縦組み">
+	<meta name="description" content="Canvasに縦組する方法とブラウザ間の差異を吸収する方法">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+	<style>
+		canvas {
+			border: 1px solid #ccc;
+		}
+
+		#vertical-rendering-type {
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>Canvasと縦書き</h1>
+
+	<h2>HTMLCanvasElement.style.writingMode を設定</h2>
+	<p>
+		<code>HTMLCanvasElement.style.writingMode = "vertical-rl"</code> を設定すると、canvasにテキストを描画するときに縦組みになります。
+	</p>
+	<canvas id="canvas1" width="240" height="240"></canvas>
+
+	<h2>CanvasRenderingContext2D.textBaseline を設定</h2>
+	<p>
+		縦組では中心線に合わせて組版することになるので、
+		<code>CanvasRenderingContext2D.textBaseline = "middle"</code> を設定するのがよいでしょう。
+		Firefox ではこれがデフォルトです。
+	</p>
+	<canvas id="canvas2" width="240" height="240"></canvas>
+
+	<h2>テキストの描画方向を検出</h2>
+	<p>
+		<code>HTMLCanvasElement.style.writingMode = "vertical-rl"</code> を設定したとき、
+		Firefox ではテキストが縦方向に描画されます。
+		Blink (Chrome, Edge) や Safari ではテキストが反時計回りに90度回転して描画されます。
+		描画位置の違いを利用して、どちらの動作をしているかを検出することができます。
+	</p>
+	<p id="vertical-rendering-type"></p>
+	<canvas id="canvas-detect-vertical-rendering-type"></canvas>
+
+	<h2>テキストの描画方向を考慮して描画</h2>
+	<p>
+		テキストの描画方向を考慮して描画する関数を作成しました。
+		このとき、canvas が DOM 上に配置されていないと "vertical-rl" が反映されないので、
+		一時的に DOM 上に配置しています。
+	</p>
+	<canvas id="canvas3" width="240" height="240"></canvas>
+
+	<script type="module">
+		import {
+			test1,
+			test2,
+			test3,
+			detectVerticalRenderingType
+		} from "./canvas-writing-mode.js";
+
+		test1("#canvas1");
+		test2("#canvas2");
+
+		const verticalRenderingType = detectVerticalRenderingType(document.getElementById("canvas-detect-vertical-rendering-type"));
+		document.getElementById("vertical-rendering-type").textContent = `テキストの描画方向: ${verticalRenderingType}`;
+
+		test3("#canvas3");
+	</script>
+
+</body>
+
+</html>
