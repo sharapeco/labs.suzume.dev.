@@ -64,23 +64,37 @@ function updateTheta(theta) {
 function test1(theta) {
 	const ctx = canvas.getContext("2d");
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
-	ctx.strokeStyle = "#08c";
+
+	ctx.strokeStyle = "#0002";
 	ctx.lineWidth = 1;
+	ctx.beginPath();
+	ctx.moveTo(0, SIZE);
+	ctx.lineTo(SIZE, 0);
+	ctx.stroke();
 
 	const sqrt21 = 1 / Math.sqrt(2);
 	const { points, length } = getClothoid(0, 0, theta);
 	const r = length === 0 ? 1 : 1 / length;
 	const [x, y] = points[points.length - 1];
+	// クロソイドの終点から求めた円弧の中心
 	const cx = x - r * Math.sin(theta);
 	const cy = y + r * Math.cos(theta);
+	// 円弧の終点
 	const dx = cx + r * sqrt21;
 	const dy = cy - r * sqrt21;
-	const scale = sqrt21 / (dx === 0 ? 1 : dx);
+	const scale = 1 / (dx + dy);
 	const SS = scale * SIZE;
 
+	// クロソイド
+	ctx.strokeStyle = "#08c";
+	ctx.lineWidth = 1;
 	drawClothoid(ctx, SS, 0, 0, theta);
+
+	// クロソイドの終点
 	ctx.fillStyle = "#000";
 	ctx.fillRect(x * SS - 1, y * SS - 1, 2, 2);
+
+	// クロソイドの終点の座標と長さ
 	ctx.font = "12px Arial";
 	ctx.textBaseline = "middle";
 	ctx.fillText(
