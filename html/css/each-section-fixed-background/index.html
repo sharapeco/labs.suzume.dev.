@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>セクションごとの背景固定</title>
+	<meta name="keywords" content="background, fixed">
+	<meta name="description" content="セクションごとの背景固定">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		html,
+		body {
+			font-family: "FOT-TsukuAntiqueLMin Std", "TsukuAntiqueLMinStd-L", serif;
+
+			--angle: 70deg;
+		}
+
+		h1 {
+			padding-top: 40vh !important;
+			font-size: 7.5vh;
+			font-weight: 400;
+		}
+
+		p {
+			padding-block: 30vh !important;
+			font-size: 5vh;
+			line-height: 2;
+		}
+
+		.section {
+			position: relative;
+			min-height: 100vh;
+			color: #fff;
+			text-shadow: 0 0 0.25em rgba(0, 0, 0, 0.5);
+		}
+
+		.section > * {
+			padding: 6vw;
+		}
+
+		.section .background {
+			position: sticky;
+			margin: 0;
+			padding: 0;
+			top: 0;
+			left: 0;
+			z-index: -1;
+			width: 100%;
+			height: 100%;
+		}
+
+		.section .background::before {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100vh;
+			background-size: cover;
+			background-position: center;
+		}
+
+		#s1 .background::before {
+			background: linear-gradient(var(--angle), #7351F3, #709FEA 20%, #63F8D4 40%, #54FAAE 70%, #4AFD83);
+		}
+
+		#s2 .background::before {
+			background: linear-gradient(var(--angle), #2E3192, #1BFFFF);
+		}
+
+		#s3 .background::before {
+			background: linear-gradient(var(--angle), #D4145A, #FBB03B);
+		}
+
+		#s4 .background::before {
+			background: linear-gradient(var(--angle), #009245, #FCEE21);
+		}
+
+		#s5 .background::before {
+			background: linear-gradient(var(--angle), #662D8C, #ED1E79);
+		}
+
+		#s6 .background::before {
+			background: linear-gradient(var(--angle), #EE9CA7, #FFDDE1);
+		}
+
+		#s7 .background::before {
+			background: linear-gradient(var(--angle), #614385, #516395);
+		}
+
+		#s8 .background::before {
+			background: linear-gradient(var(--angle), #02AABD, #00CDAC);
+		}
+
+		#s9 .background::before {
+			background: linear-gradient(var(--angle), #FF512F, #DD2476);
+		}
+
+		#s10 .background::before {
+			background: linear-gradient(var(--angle), #FF5F6D, #FFC371);
+		}
+
+		#s11 .background::before {
+			background: linear-gradient(var(--angle), #11998E, #38EF7D);
+		}
+
+		#s12 .background::before {
+			background: linear-gradient(var(--angle), #C6EA8D, #FE90AF);
+		}
+
+		#s13 .background::before {
+			background: linear-gradient(var(--angle), #EA8D8D, #A890FE);
+		}
+
+		#s14 .background::before {
+			background: linear-gradient(var(--angle), #D8B5FF, #1EAE98);
+		}
+
+		#s15 .background::before {
+			background: linear-gradient(var(--angle), #FF61D2, #FE9090);
+		}
+
+		#s16 .background::before {
+			background: linear-gradient(var(--angle), #BFF098, #6FD6FF);
+		}
+
+		#s17 .background::before {
+			background: linear-gradient(var(--angle), #4E65FF, #92EFFD);
+		}
+
+		#s18 .background::before {
+			background: linear-gradient(var(--angle), #A9F1DF, #FFBBBB);
+		}
+
+		#s19 .background::before {
+			background: linear-gradient(var(--angle), #C33764, #1D2671);
+		}
+
+		#s20 .background::before {
+			background: linear-gradient(var(--angle), #93A5CF, #E4EfE9);
+		}
+
+		#s21 .background::before {
+			background: linear-gradient(var(--angle), #868F96, #596164);
+		}
+
+		#s22 .background::before {
+			background: linear-gradient(var(--angle), #09203F, #537895);
+		}
+
+		#s23 .background::before {
+			background: linear-gradient(var(--angle), #FFECD2, #FCB69F);
+		}
+
+		#s24 .background::before {
+			background: linear-gradient(var(--angle), #A1C4FD, #C2E9FB);
+		}
+
+		#s25 .background::before {
+			background: linear-gradient(var(--angle), #764BA2, #667EEA);
+		}
+
+		#s26 .background::before {
+			background: linear-gradient(var(--angle), #FDFCFB, #E2D1C3);
+		}
+	</style>
+	<script src="https://webfont.fontplus.jp/accessor/script/fontplus.js?MRlT4X70yn0%3D&box=gq~VwdO9dJY%3D&aa=1&ab=2"></script>
+</head>
+
+<body>
+
+	<section class="section" id="s1">
+		<div class="background"></div>
+		<h1>セクションごとの背景固定</h1>
+	</section>
+
+	<script>
+		for (let i = 2; i <= 26; i++) {
+			const section = document.createElement("section");
+			section.classList.add("section");
+			section.id = `s${i}`;
+			section.innerHTML = `
+				<div class="background"></div>
+				<p>とりなくこゑす<br>
+					ゆめさませ<br>
+					みよあけわたる<br>
+					ひんがしを<br>
+					そらいろはえて<br>
+					おきつへに<br>
+					ほふねむれゐぬ<br>
+					もやのうち</p>
+			`;
+			document.body.appendChild(section);
+		}
+	</script>
+
+</body>
+
+</html>
