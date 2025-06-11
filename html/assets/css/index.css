@@ -7,21 +7,39 @@
 	--border-color: #e5e7eb;
 	--hover-color: #f3f4f6;
 	--no-results-color: #ff6b6b;
+
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+		sans-serif;
+	color: var(--text-color);
+	background-color: var(--background-color);
 }
 
 body {
 	min-height: 100vh;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
-		sans-serif;
-	color: var(--text-color);
 	line-height: 1.5;
 	margin: 0;
 	padding: 2rem;
-	background-color: var(--background-color);
 }
 
 h1 {
+	font-size: 200%;
 	margin-top: 0;
+}
+
+.index-header {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 0.25rem;
+	margin-bottom: 1.5rem;
+}
+
+.index-header h1 {
+	margin: 0;
+}
+
+.index-header img {
+	margin-inline: -0.125rem;
 }
 
 .container {

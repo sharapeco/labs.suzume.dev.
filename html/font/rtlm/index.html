@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>rtlmフィーチャー</title>
+	<meta name="keywords" content="font,OpenType,rtlm feature">
+	<meta name="description" content="OpenTypeの rtlm フィーチャーを使い、書字方向が右から左の場合の字形を表示する。">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+</head>
+
+<body>
+
+	<h1>rtlmフィーチャー</h1>
+
+	<h2>normal</h2>
+	<div>
+		<p style="font-family: 'Hiragino Kaku Gothic', sans-serif">
+			左←右→左（右）
+		</p>
+	</div>
+
+	<h2>font-feature-settings: "rtlm"</h2>
+	<div style="font-feature-settings: 'rtlm';">
+		<p style="font-family: 'Hiragino Kaku Gothic', sans-serif">
+			左←右→左（右）
+		</p>
+	</div>
+</body>
+
+</html>
