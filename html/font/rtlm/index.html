@@ -17,7 +17,7 @@
 		}
 
 		body {
-			max-width: 300px;
+			max-width: 400px;
 			margin: 0 auto;
 			padding: 1em;
 		}
@@ -41,6 +41,8 @@
 <body>
 
 	<h1>rtlmフィーチャー</h1>
+
+	<p>rtlm フィーチャーが効いている「%」の文字は、向きが反転して「rtlm」マークがつきます。</p>
 
 	<h2>normal</h2>
 	<div>
@@ -67,6 +69,20 @@
 	<div style="font-feature-settings: 'rtlm';">
 		<p>
 			→ 12 % &lt; 34 %
+		</p>
+	</div>
+
+	<h2>U+200F right-to-left mark</h2>
+	<div>
+		<p>
+			&#x200F;→ 12 % &lt; 34 %
+		</p>
+	</div>
+
+	<h2>U+202E right-to-left override</h2>
+	<div>
+		<p>
+			&#x202E;→ 12 % &lt; 34 %
 		</p>
 	</div>
 </body>
