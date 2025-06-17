@@ -5,9 +5,36 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>rtlmフィーチャー</title>
-	<meta name="keywords" content="font,OpenType,rtlm feature">
+	<meta name="keywords" content="font,OpenType,rtlm,font-feature-settings,書字方向,GSUB">
 	<meta name="description" content="OpenTypeの rtlm フィーチャーを使い、書字方向が右から左の場合の字形を表示する。">
 	<link rel="stylesheet" href="/assets/css/fundamental.css">
+	<style>
+		@font-face {
+			font-family: "TestFont";
+			src: url("EmberizaSans-12-rtlm-W4.woff2") format("woff2");
+			font-weight: 400;
+			font-style: normal;
+		}
+
+		body {
+			max-width: 600px;
+			margin: 0 auto;
+		}
+
+		h2 {
+			margin: 1.5rem 0 0.5rem;
+			font-size: 1rem;
+			font-weight: 800;
+			color: #666;
+		}
+
+		p {
+			font-family: "TestFont", sans-serif;
+			font-size: 200%;
+			line-height: 1.5;
+			margin: 0.5em 0;
+		}
+	</style>
 </head>
 
 <body>
@@ -16,15 +43,29 @@
 
 	<h2>normal</h2>
 	<div>
-		<p style="font-family: 'Hiragino Kaku Gothic', sans-serif">
-			左←右→左（右）
+		<p>
+			123 %
+		</p>
+	</div>
+
+	<h2>direction: rtl</h2>
+	<div style="direction: rtl;">
+		<p>
+			123 %
 		</p>
 	</div>
 
 	<h2>font-feature-settings: "rtlm"</h2>
 	<div style="font-feature-settings: 'rtlm';">
-		<p style="font-family: 'Hiragino Kaku Gothic', sans-serif">
-			左←右→左（右）
+		<p>
+			123 %
+		</p>
+	</div>
+
+	<h2>dir="rtl"</h2>
+	<div dir="rtl">
+		<p>
+			إنّه بستّين %.
 		</p>
 	</div>
 </body>
