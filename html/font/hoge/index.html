@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>登録されていないOpenTypeフィーチャー</title>
+	<meta name="keywords" content="font,OpenType,font-feature-settings,GSUB,GPOS">
+	<meta name="description" content="OpenTypeに登録されていない名前のフィーチャーが機能するかどうかを確認する">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+	<style>
+		@font-face {
+			font-family: "TestFont";
+			src: url("EmberizaSans-12-hoge-W4.woff2") format("woff2");
+			font-weight: 400;
+			font-style: normal;
+		}
+
+		body {
+			max-width: 400px;
+			margin: 0 auto;
+			padding: 1em;
+		}
+
+		h2 {
+			margin: 1.5rem 0 0.5rem;
+			font-size: 1rem;
+			font-weight: 800;
+			color: #666;
+		}
+
+		div p {
+			font-family: "TestFont", sans-serif;
+			font-size: 200%;
+			line-height: 1.5;
+			margin: 0.5em 0;
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>登録されていないOpenTypeフィーチャー</h1>
+
+	<p>OpenTypeに登録されていない名前のフィーチャーが機能するかどうかを確認します。</p>
+	<p>このフォントには <code>hoge</code> フィーチャーが設定されており、もし機能すれば「H」が「Hoge」のようなグリフに置き換わります。</p>
+
+	<h2>normal</h2>
+	<div>
+		<p>
+			H
+		</p>
+	</div>
+
+	<h2>font-feature-settings: "hoge"</h2>
+	<div style="font-feature-settings: 'hoge';">
+		<p>
+			H
+		</p>
+	</div>
+</body>
+
+</html>
