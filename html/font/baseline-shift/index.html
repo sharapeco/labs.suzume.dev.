@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>GPOSでベースラインシフト</title>
+	<meta name="keywords" content="font,OpenType,font-feature-settings,GPOS,baseline">
+	<meta name="description" content="ベースラインを移動させるための独自のOpenTypeフィーチャーを作り、font-feature-settingsで適用。">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+	<style>
+		@font-face {
+			font-family: "TestFont";
+			src: url("EmberizaSans-12-W3-bs.woff2") format("woff2");
+			font-weight: 300;
+			font-style: normal;
+		}
+
+		body {
+			max-width: 420px;
+			margin: 0 auto;
+			padding: 1em;
+		}
+
+		h2 {
+			margin: 1.5rem 0 0.5rem;
+			font-size: 1rem;
+			font-weight: 800;
+			color: #666;
+		}
+
+		div p {
+			font-family: "TestFont", "Hiragino Sans", sans-serif;
+			font-size: 200%;
+			line-height: 1.5;
+			margin: 0.5em 0;
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>GPOSでベースラインシフト</h1>
+
+	<p>この欧文フォントには Bs00–99, BS00–99 という独自のフィーチャーが設定されており、ベースラインを上下に移動させるようになっています。</p>
+
+	<h2>normal</h2>
+	<div>
+		<p>
+			楽しいText混植
+		</p>
+	</div>
+
+	<h2>font-feature-settings: <span id="title"></span></h2>
+	<div id="out">
+		<p>
+			楽しいText混植
+		</p>
+	</div>
+	<div>
+		シフト量: <input id="index" type="range" min="-100" max="100" value="0" step="1">
+	</div>
+
+	<script>
+		const input = document.getElementById('index');
+		const out = document.getElementById('out');
+		const title = document.getElementById('title');
+		input.addEventListener('input', () => {
+			const value = input.valueAsNumber;
+			const tag = (value === 0) ? null : (value < 0 ? 'bm' : 'bp') + Math.abs(value).toString().padStart(2, '0');
+			out.style.fontFeatureSettings = tag === null ? "none" : `"${tag}"`;
+			title.textContent = (tag === null) ? 'none' : `"${tag}"`;
+		});
+	</script>
+</body>
+
+</html>
