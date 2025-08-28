@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>TTCをWebフォントとして使う</title>
+	<meta name="keywords" content="TTC,TrueType collection,font,@font-face">
+	<meta name="description" content="TTCは一部ブラウザでWebフォントとして使える。">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+	<style>
+		@font-face {
+			font-family: "GenEiLateGo";
+			src: url("https://static.suzume.dev/labs/fonts/GenEiLateGo_v2.ttc") format("truetype");
+		}
+
+		body {
+			padding: 1.5em;
+			max-width: 60em;
+			margin-inline: auto;
+		}
+
+		.demo {
+			margin-bottom: 3em;
+			font-size: 150%;
+			font-family: "GenEiLateGo", sans-serif;
+			line-height: 1.8;
+		}
+
+		.bold {
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>TTCをWebフォントとして使う</h1>
+
+	<div class="demo">
+		<p>グーテンベルクが活版印刷術を発明したのは1440年代後半といわれています。それから約20年後の1465年、その新しい技術はアルプスを越え、イタリアに伝わりました。ドイツから来たSweynheimとPannartzという二人がローマの北にあるSubiacoという村の修道院に滞在し、そこでイタリア最初の印刷物をつくったのです。
+		</p>
+		<p class="bold">
+			グーテンベルクが活版印刷術を発明したのは1440年代後半といわれています。それから約20年後の1465年、その新しい技術はアルプスを越え、イタリアに伝わりました。ドイツから来たSweynheimとPannartzという二人がローマの北にあるSubiacoという村の修道院に滞在し、そこでイタリア最初の印刷物をつくったのです。
+		</p>
+	</div>
+
+	<p>Chrome, Edge, Safari ではTTCをWebフォントとして使うことができ、 <code>font-weight</code> を指定することでコレクション内のフォントを自動的に選択してくれます。</p>
+	<p>Firefox では <code>downloadable font: rejected by sanitizer</code> というエラーが出てWebフォントとして使用できません。</p>
+
+</body>
+
+</html>
