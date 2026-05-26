@@ -26,10 +26,15 @@ async function findIndexFiles(dir, ig) {
 
 	for (const entry of entries) {
 		const fullPath = join(dir, entry.name);
-		const relativePath = relative(rootDir, fullPath);
 
+		const relativePath = relative(rootDir, fullPath);
 		if (ig.ignores(relativePath)) {
 			continue;
+		}
+
+		const htmlRelativePath = relative(htmlDir, fullPath);
+		if (htmlRelativePath === "index.html") {
+			continue; // Skip the root index.html
 		}
 
 		if (entry.isDirectory()) {
