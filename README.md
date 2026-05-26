@@ -14,15 +14,15 @@ Web技術の実験場
 
 ### ローカル環境での確認
 
-- 初めての場合は `npm install` で依存関係をインストールする
+- 初めての場合は `pnpm install` で依存関係をインストールする
 - `scripts/template.html` を参考にHTML文書を作成する
-- `npm run build` でビルドする
-- `npm start` でローカルサーバを立ち上げ、 `http://localhost:8090` にアクセスして確認する（ポート番号はコンソールから確認）
+- `pnpm build` でビルドする
+- `pnpm start` でローカルサーバを立ち上げ、 `http://localhost:8090` にアクセスして確認する（ポート番号はコンソールから確認）
 
 ### Cloudflare Pages へのデプロイ
 
 - Framework preset: none
-- Build command: `npm run build`
+- Build command: `pnpm build`
 - Build output: `html`
 - Root directory:
 
