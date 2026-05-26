@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>img 読み込み失敗時の alt 表示テスト</title>
+	<meta name="keywords" content="CSS,img,alt,broken image,font,border,anchor">
+	<meta name="description" content="img 要素の画像読み込み失敗時に alt テキストがどう表示されるかを、固定サイズと複数スタイル条件で比較するテスト。">
+	<link rel="stylesheet" href="/assets/css/fundamental.css">
+	<style>
+		:root {
+			--sample-width: 220px;
+			--sample-height: 80px;
+		}
+
+		body {
+			max-width: 980px;
+			margin-inline: auto;
+			padding-inline: 1rem;
+		}
+
+		.grid {
+			display: grid;
+			gap: 1rem;
+			grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		}
+
+		.case {
+			padding: 1rem;
+			border: 1px solid #d6d6d6;
+			border-radius: 0.4rem;
+			background: #fff;
+		}
+
+		.case h2 {
+			margin: 0 0 0.25rem;
+			font-size: 1rem;
+		}
+
+		.case p {
+			margin: 0 0 0.75rem;
+			font-size: 0.875rem;
+			color: #444;
+		}
+
+		.sample {
+			display: grid;
+			place-items: center;
+			padding: 0.75rem;
+			background: #f5f6f8;
+			border: 1px dashed #ccd0d5;
+		}
+
+		.test-img {
+			width: var(--sample-width);
+			height: var(--sample-height);
+		}
+
+		.no-border {
+			border: none;
+		}
+
+		.direct-font {
+			font-family: "Courier New", Courier, monospace;
+			font-size: 24px;
+			font-weight: 700;
+			line-height: 1.3;
+		}
+
+		.parent-font {
+			font-family: Georgia, "Times New Roman", serif;
+			font-size: 22px;
+			font-style: italic;
+			line-height: 1.25;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>img 読み込み失敗時の alt 表示テスト</h1>
+	<p>すべて同じ未存在画像を参照し、alt テキストの見え方のみを比較します。img 要素の表示サイズは固定です。</p>
+
+	<div class="grid">
+		<section class="case">
+			<h2>1. ブラウザのデフォルトスタイル</h2>
+			<p>img のサイズ固定以外は未指定。</p>
+			<div class="sample">
+				<img class="test-img" src="./__missing-image__.png" alt="ALT default sample">
+			</div>
+		</section>
+
+		<section class="case">
+			<h2>2. リンク内 img のデフォルトスタイル</h2>
+			<p>a 要素の中に配置したケース。</p>
+			<div class="sample">
+				<a href="#link-alt-test">
+					<img class="test-img" src="./__missing-image__.png" alt="ALT inside link sample">
+				</a>
+			</div>
+		</section>
+
+		<section class="case">
+			<h2>3. border: none</h2>
+			<p>img の枠を明示的に除去したケース。</p>
+			<div class="sample">
+				<img class="test-img no-border" src="./__missing-image__.png" alt="ALT no border sample">
+			</div>
+		</section>
+
+		<section class="case">
+			<h2>4. font 関連を img に直接指定</h2>
+			<p>font-family / font-size / font-weight / line-height を img に指定。</p>
+			<div class="sample">
+				<img class="test-img direct-font" src="./__missing-image__.png" alt="ALT direct font sample">
+			</div>
+		</section>
+
+		<section class="case parent-font">
+			<h2>5. 親要素から font 関連を継承</h2>
+			<p>font 関連プロパティは親要素に設定し、img 側は未指定。</p>
+			<div class="sample">
+				<img class="test-img" src="./__missing-image__.png" alt="ALT inherited font sample">
+			</div>
+		</section>
+	</div>
+</body>
+
+</html>
